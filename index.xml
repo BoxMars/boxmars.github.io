@@ -6,7 +6,30 @@
     <description>Recent content on Box&#39;s Blackboard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Feb 2021 15:59:55 +0800</lastBuildDate><atom:link href="https://boxmars.life/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2021 [Box ZHANG](https://boxmars.life)</copyright>
+    <lastBuildDate>Wed, 24 Feb 2021 12:07:15 +0800</lastBuildDate><atom:link href="https://boxmars.life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ethereum Whitepaper</title>
+      <link>https://boxmars.life/posts/ethereum-whitepaper/</link>
+      <pubDate>Wed, 24 Feb 2021 12:07:15 +0800</pubDate>
+      
+      <guid>https://boxmars.life/posts/ethereum-whitepaper/</guid>
+      <description>以太坊白皮书  本篇介绍论文由 Vitalik Buterin 在2013年首次发表。 他是以太坊的创立者，该项目于2015年正是启动。 值得注意的是，以太坊和其他的社区驱动的开源软件项目一样， 自创立之初就不断发展。
+  虽然已有数年之久，我们依然保留这篇论文， 因为她继续作为有用的参考和精确的目标和愿景。 如果您想了解以太坊的最新开发进度和如何修改协议， 我们推荐您阅读这篇指引
+ 次世代智能合约和去中心化应用平台 Satoshi Nakamoto 于 2009 年所开发的 Bitcoin</description>
+    </item>
+    
+    <item>
+      <title>[Forward] Render LaTeX math expressions in Hugo with MathJax 3</title>
+      <link>https://boxmars.life/library/mathjax/</link>
+      <pubDate>Sat, 20 Feb 2021 02:28:55 +0800</pubDate>
+      
+      <guid>https://boxmars.life/library/mathjax/</guid>
+      <description>Original
+Adapted for MathJax 3 The code below is a modification of Doswa’s code which loads MathJax 3 instead of 2.x.
+ Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &amp;lt;script&amp;gt; MathJax = { tex: { inlineMath: [[&amp;#39;$&amp;#39;, &amp;#39;$&amp;#39;], [&amp;#39;\\(&amp;#39;, &amp;#39;\\)&amp;#39;]], displayMath: [[&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;], [&amp;#39;\\[&amp;#39;, &amp;#39;\\]&amp;#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&amp;#39;script&amp;#39;, &amp;#39;noscript&amp;#39;, &amp;#39;style&amp;#39;, &amp;#39;textarea&amp;#39;, &amp;#39;pre&amp;#39;] } }; window.addEventListener(&amp;#39;load&amp;#39;, (event) =&amp;gt; { document.querySelectorAll(&amp;#34;mjx-container&amp;#34;).forEach(function(x){ x.parentElement.classList += &amp;#39;has-jax&amp;#39;}) }); &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://polyfill.</description>
+    </item>
+    
     <item>
       <title>Bitcoin: A Peer-to-Peer Electronic Cash System</title>
       <link>https://boxmars.life/posts/bitcoin/</link>
@@ -25,6 +48,24 @@
       
       <guid>https://boxmars.life/posts/hello-world/</guid>
       <description>Box is Here.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://boxmars.life/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://boxmars.life/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>https://boxmars.life/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://boxmars.life/search/</guid>
+      <description>search</description>
     </item>
     
   </channel>

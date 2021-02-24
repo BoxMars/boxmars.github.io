@@ -3,17 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://boxmars.life/posts/bitcoin/</loc>
-    <lastmod>2021-02-17T15:59:55+08:00</lastmod>
+    <loc>https://boxmars.life/</loc>
+    <lastmod>2021-02-24T12:07:15+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boxmars.life/</loc>
-    <lastmod>2021-02-17T15:59:55+08:00</lastmod>
+    <loc>https://boxmars.life/posts/ethereum-whitepaper/</loc>
+    <lastmod>2021-02-24T12:07:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://boxmars.life/posts/</loc>
+    <lastmod>2021-02-24T12:07:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://boxmars.life/library/mathjax/</loc>
+    <lastmod>2021-02-20T02:28:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://boxmars.life/library/</loc>
+    <lastmod>2021-02-20T02:28:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://boxmars.life/posts/bitcoin/</loc>
     <lastmod>2021-02-17T15:59:55+08:00</lastmod>
   </url>
   
@@ -23,7 +38,16 @@
   </url>
   
   <url>
+    <loc>https://boxmars.life/about/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://boxmars.life/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://boxmars.life/search/</loc>
   </url>
   
   <url>

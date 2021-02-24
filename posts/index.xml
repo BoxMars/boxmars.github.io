@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Box&#39;s Blackboard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Feb 2021 15:59:55 +0800</lastBuildDate><atom:link href="https://boxmars.life/posts/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2021 [Box ZHANG](https://boxmars.life)</copyright>
+    <lastBuildDate>Wed, 24 Feb 2021 12:07:15 +0800</lastBuildDate><atom:link href="https://boxmars.life/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ethereum Whitepaper</title>
+      <link>https://boxmars.life/posts/ethereum-whitepaper/</link>
+      <pubDate>Wed, 24 Feb 2021 12:07:15 +0800</pubDate>
+      
+      <guid>https://boxmars.life/posts/ethereum-whitepaper/</guid>
+      <description>以太坊白皮书  本篇介绍论文由 Vitalik Buterin 在2013年首次发表。 他是以太坊的创立者，该项目于2015年正是启动。 值得注意的是，以太坊和其他的社区驱动的开源软件项目一样， 自创立之初就不断发展。
+  虽然已有数年之久，我们依然保留这篇论文， 因为她继续作为有用的参考和精确的目标和愿景。 如果您想了解以太坊的最新开发进度和如何修改协议， 我们推荐您阅读这篇指引
+ 次世代智能合约和去中心化应用平台 Satoshi Nakamoto 于 2009 年所开发的 Bitcoin</description>
+    </item>
+    
     <item>
       <title>Bitcoin: A Peer-to-Peer Electronic Cash System</title>
       <link>https://boxmars.life/posts/bitcoin/</link>
