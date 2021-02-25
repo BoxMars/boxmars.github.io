@@ -7,7 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2021 [Box ZHANG](https://boxmars.life)</copyright>
-    <lastBuildDate>Wed, 24 Feb 2021 12:07:15 +0800</lastBuildDate><atom:link href="https://boxmars.life/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Feb 2021 21:07:15 +0800</lastBuildDate><atom:link href="https://boxmars.life/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何高效的使用Google</title>
+      <link>https://boxmars.life/posts/google/</link>
+      <pubDate>Wed, 24 Feb 2021 21:07:15 +0800</pubDate>
+      
+      <guid>https://boxmars.life/posts/google/</guid>
+      <description>import pandas as pd import numpy as np import matplotlib.pyplot as plt a=4 b=2 c=10000000 U=pd.Series(np.random.normal(a,b,c)) plt.hist(U,bins=100,facecolor=&amp;#39;blue&amp;#39;,edgecolor=&amp;#39;black&amp;#39;,density=&amp;#39;true&amp;#39;) plt.show()   报错1 Traceback (most recent call last): File &amp;#34;&amp;lt;stdin&amp;gt;&amp;#34;, line 1, in &amp;lt;module&amp;gt; ModuleNotFoundError: No module named &amp;#39;numpy&amp;#39;   Traceback (most recent call last):
+报错开头，不用管
+  File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;:
+重点：line 1，错误出现在第几行。
+  ModuleNotFoundError 错误类型 (此处为具体的报错信息)
+  No module named &#39;numpy&#39; 没有名为 adads 的库 (此处为具体的报错信息)</description>
+    </item>
+    
     <item>
       <title>Ethereum Whitepaper</title>
       <link>https://boxmars.life/posts/ethereum-whitepaper/</link>
