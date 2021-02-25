@@ -16,7 +16,7 @@
       <guid>https://boxmars.life/posts/ethereum-whitepaper/</guid>
       <description>以太坊白皮书  本篇介绍论文由 Vitalik Buterin 在2013年首次发表。 他是以太坊的创立者，该项目于2015年正是启动。 值得注意的是，以太坊和其他的社区驱动的开源软件项目一样， 自创立之初就不断发展。
   虽然已有数年之久，我们依然保留这篇论文， 因为她继续作为有用的参考和精确的目标和愿景。 如果您想了解以太坊的最新开发进度和如何修改协议， 我们推荐您阅读这篇指引
- 次世代智能合约和去中心化应用平台 Satoshi Nakamoto 于 2009 年所开发的 Bitcoin</description>
+ A Next-Generation Smart Contract and Decentralized Application Platform (次世代智能合约和去中心化应用平台) Satoshi Nakamoto 于 2009 年所开发的 Bitcoin ，作为第一个无需背书还没有内在价值不存在中心化的货币发行者和控制者的数字资产的实例，被誉为是金钱和货币领域的重要发展。 当然，比特币实验的更重要的意义是在底层使用了区块链技术来实现分布式共识的达成，而且，我们对区块链技术的应用场景的想象正在不断延展。 常见的使用区块链技术作为替代技术的应用包括使用区块链数字资产来表示自定义的货币或者金融工具(colored coins), 底层物理设备的产权确认(smart property)，不可替代资产，如域名(Namecoin)。还有一些更复杂的应用，如执行任意规则的一段代码所直接控制数字资产的应用程序(smart contracts)， 甚至还有基于区块链技术的去中心的匿名组织(DAOs)。</description>
     </item>
     
     <item>
