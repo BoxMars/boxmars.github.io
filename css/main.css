@@ -1,8 +1,8 @@
 /* Markdown */
 :root{
---maincolor: red;
+--maincolor: dodgerblue;
 --bordercl:rebeccapurple;
---callouctcolor:dodgerblue;
+--callouctcolor:red;
 --hovercolor:navy;
 --darkMaincolor: #50fa7b;
 }
