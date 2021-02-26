@@ -1,284 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Posts - Box&#39;s Blackboard</title><link rel="icon" type="image/png" href=img/icon.jpg /><meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Posts | Box&#39;s Blackboard</title>
-
-<meta name="keywords" content="" />
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="canonical" href="https://boxmars.life/posts/" />
-<link href="/assets/css/stylesheet.min.b8c275f8435e780b820bc0184ea79cae978f8c8f32c24cf6d7d1b86a7ea8b600.css" integrity="sha256-uMJ1&#43;ENeeAuCC8AYTqecrpePjI8ywkz219G4an6otgA=" rel="preload stylesheet"
-    as="style">
-
-<link rel="icon" href="https://boxmars.life/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://boxmars.life/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://boxmars.life/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://boxmars.life/apple-touch-icon.png">
-<link rel="mask-icon" href="https://boxmars.life/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<meta name="generator" content="Hugo 0.80.0" />
-<link rel="alternate" type="application/rss&#43;xml" href="https://boxmars.life/posts/index.xml">
-
-
-<meta property="og:title" content="Posts" />
+	<meta property="og:image" content=""/>
+	<link rel="alternate" type="application/rss+xml" href="https://boxmars.life/posts/index.xml" title="Box's Blackboard" />
+	<meta property="og:title" content="Posts" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://boxmars.life/posts/" />
-<meta property="og:updated_time" content="2021-02-24T21:07:15+08:00" />
+<meta property="og:updated_time" content="2021-02-24T12:07:15+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content=""/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://boxmars.life/posts/"
-    }
-  ]
-}
-</script>
-
-
-
-
+<script src="https://boxmars.life/js/feather.min.js"></script>
+	
+	<link href="https://boxmars.life/css/fonts.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://boxmars.life/css/main.css" />
+	
 </head>
-
-<body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-<noscript>
-    <style type="text/css">
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-</noscript>
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://boxmars.life/" accesskey="h" title="Box&#39;s Blackboard (Alt + H)">Box&#39;s Blackboard</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-                
-                
-            </span>
-        </div>
-        <ul id="menu" onscroll="menu_on_scroll()"></ul>
-    </nav>
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</header>
-
-    <main class="main"> 
-<header class="page-header">
-
-  <h1>Posts</h1>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://boxmars.life/">Box&#39;s Blackboard</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/posts">Posts</a>
+		
+	</nav>
 </header>
 
 
+<h1 class="page-title">All articles</h1>
 
 
-
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      如何高效的使用Google
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>import pandas as pd import numpy as np import matplotlib.pyplot as plt a=4 b=2 c=10000000 U=pd.Series(np.random.normal(a,b,c)) plt.hist(U,bins=100,facecolor=&#39;blue&#39;,edgecolor=&#39;black&#39;,density=&#39;true&#39;) plt.show()   报错1 Traceback (most recent call last): File &#34;&lt;stdin&gt;&#34;, line 1, in &lt;module&gt; ModuleNotFoundError: No module named &#39;numpy&#39;   Traceback (most recent call last):
-报错开头，不用管
-  File &#34;&lt;stdin&gt;&#34;, line 1, in &lt;module&gt;:
-重点：line 1，错误出现在第几行。
-  ModuleNotFoundError 错误类型 (此处为具体的报错信息)
-  No module named &#39;numpy&#39; 没有名为 adads 的库 (此处为具体的报错信息)...</p>
-  </section>
-  <footer class="entry-footer">February 24, 2021
+<ul class="posts"><li class="post">
+			<a href="/posts/ethereum-whitepaper/">Ethereum Whitepaper</a> <span class="meta">Feb 24, 2021</span>
+		</li><li class="post">
+			<a href="/posts/bitcoin/">Bitcoin: A Peer-to-Peer Electronic Cash System</a> <span class="meta">Feb 17, 2021</span>
+		</li><li class="post">
+			<a href="/posts/hello-world/">Hello World</a> <span class="meta">Feb 17, 2021</span>
+		</li></ul>
+<footer>
+<hr><a class="soc" href="https://github.com/boxmars" title="GitHub"><i data-feather="github"></i></a>|⚡️
+	2021  © Box ZHANG |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
 </footer>
-  <a class="entry-link" aria-label="post link to 如何高效的使用Google" href="https://boxmars.life/posts/google/"></a>
-</article>
-
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Ethereum Whitepaper
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>以太坊白皮书  本篇介绍论文由 Vitalik Buterin 在2013年首次发表。 他是以太坊的创立者，该项目于2015年正是启动。 值得注意的是，以太坊和其他的社区驱动的开源软件项目一样， 自创立之初就不断发展。
-  虽然已有数年之久，我们依然保留这篇论文， 因为她继续作为有用的参考和精确的目标和愿景。 如果您想了解以太坊的最新开发进度和如何修改协议， 我们推荐您阅读这篇指引
- A Next-Generation Smart Contract and Decentralized Application Platform (次世代智能合约和去中心化应用平台) Satoshi Nakamoto 于 2009 年所开发的 Bitcoin ，作为第一个无需背书还没有内在价值不存在中心化的货币发行者和控制者的数字资产的实例，被誉为是金钱和货币领域的重要发展。 当然，比特币实验的更重要的意义是在底层使用了区块链技术来实现分布式共识的达成，而且，我们对区块链技术的应用场景的想象正在不断延展。 常见的使用区块链技术作为替代技术的应用包括使用区块链数字资产来表示自定义的货币或者金融工具(colored coins), 底层物理设备的产权确认(smart property)，不可替代资产，如域名(Namecoin)。还有一些更复杂的应用，如执行任意规则的一段代码所直接控制数字资产的应用程序(smart contracts)， 甚至还有基于区块链技术的去中心的匿名组织(DAOs)。...</p>
-  </section>
-  <footer class="entry-footer">February 24, 2021
-</footer>
-  <a class="entry-link" aria-label="post link to Ethereum Whitepaper" href="https://boxmars.life/posts/ethereum-whitepaper/"></a>
-</article>
-
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Bitcoin: A Peer-to-Peer Electronic Cash System
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>比特币: 一种端对端的电子货币系统 Author: Satoshi Nakamoto Translator: Box Abstract 一个完全端对端 (purely peer-to-peer) 的电子货币使得由一方发给另一方的在线交易无需经过金融机构。 尽管解决方案中需要数字签名 (digital signature)的支持， 但是如果交易仍然需要第三方的存在来防范双重支付 (double-spending) 的发生的话， 我们将失去数字签名所带来的各项便利。 我们因此提出一种使用端对端网络 (peer-to-peer network) 来解决双重支付问题的方案。 交易网络会通过将交易哈希进一个持续增长的基于哈希工作量证明 (hash-based proof-of-work) 链来打上时间戳， 生成一个无法更改的记录， 除非重做了工作量证明。 最长的连不仅作为一系列交易发生的证明， 还证明了它本身由最大的CPU 算力池 (pool of CPU power) 计算产生。 只要主要的CPU算力在那些不会参与网络攻击的节点控制之下， 它们就会成为生成最长的链并战胜攻击者。 整个网络本身只需要极简的架构。 网络会尽全力广播消息， 节点可以随意的加入或是离开网络， 在再次加入的时候接受最长的工作量证明链来作为他们离开时发生的一切的证据。
-1. Introduction 互联网上发生的商业几乎全部依赖金融机构作为被信任的第三方来处理电子交易。 尽管对于大多数和交易来说， 整个系统运作地足够优秀， 但是它在信任模型 (trust based model) 仍然存在一些固有的缺点。 由于金融机构不可避免地需要调解纠纷， 所以完全不可逆地交易时不可能的。 调解纠纷所需要的成本增加了交易的成本， 限制了最小交易金额， 消除了小额临时交易地可能性。 由于不支持不可逆地地交易的发生， 因此对于不可撤销服务进行支付需要更大的成本。 由于交易可逆， 因此信任的需求更加广泛。 商家必须更加警惕他们的客户， 向他们所需一些他们本来不需要的信息。 一定比例的欺诈被认为是不可避免的。 如果人们选择使用物理货币进行交易，那么可以避免这些成本和交易的不确定性， 但是不存在不需要信任的第三方而能在通讯管道进行交易的商家。
-我们所需要的是一种基于密码学证明而不是信任的电子货币交易系统， 它允许任意的两方直接交易而不需要一个信任的第三方。 计算上不可逆的交易将会保护销售者不会受到诈骗。 用来保护购买者的程序化合约机制 (routine escrow mechanisms) 也容易实现。 在本篇文章中我们提出了解决双重支付的方案， 它使用端对端分布式时间戳服务来生成基于交易时间顺序的计算证明。 只要诚信的节点控制下的CPU算力超过那些合作攻击的节点的CPU算力， 整个网络就是安全的。...</p>
-  </section>
-  <footer class="entry-footer">February 17, 2021
-</footer>
-  <a class="entry-link" aria-label="post link to Bitcoin: A Peer-to-Peer Electronic Cash System" href="https://boxmars.life/posts/bitcoin/"></a>
-</article>
-
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      Hello World
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>Box is Here....</p>
-  </section>
-  <footer class="entry-footer">February 17, 2021
-</footer>
-  <a class="entry-link" aria-label="post link to Hello World" href="https://boxmars.life/posts/hello-world/"></a>
-</article>
-
-    </main><footer class="footer">
-    <span>© 2021 <a href="https://boxmars.life">Box ZHANG</a></span>
-    <span>&middot;</span>
-    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
-    <span>&middot;</span>
-    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
-    <button class="top-link" id="top-link" type="button" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </button>
-</a>
-
 
 
 <script>
-    window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
-        }
-    }
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
-    }
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-
-</body>
-
+      feather.replace()
+</script></div>
+    </body>
 </html>

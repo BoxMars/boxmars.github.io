@@ -6,7 +6,7 @@
     <description>Recent content in Libraries on Box&#39;s Blackboard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>© 2021 [Box ZHANG](https://boxmars.life)</copyright>
+    <copyright>© Box ZHANG</copyright>
     <lastBuildDate>Sat, 20 Feb 2021 02:28:55 +0800</lastBuildDate><atom:link href="https://boxmars.life/library/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Forward] Render LaTeX math expressions in Hugo with MathJax 3</title>
@@ -14,9 +14,7 @@
       <pubDate>Sat, 20 Feb 2021 02:28:55 +0800</pubDate>
       
       <guid>https://boxmars.life/library/mathjax/</guid>
-      <description>Original
-Adapted for MathJax 3 The code below is a modification of Doswa’s code which loads MathJax 3 instead of 2.x.
- Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &amp;lt;script&amp;gt; MathJax = { tex: { inlineMath: [[&amp;#39;$&amp;#39;, &amp;#39;$&amp;#39;], [&amp;#39;\\(&amp;#39;, &amp;#39;\\)&amp;#39;]], displayMath: [[&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;], [&amp;#39;\\[&amp;#39;, &amp;#39;\\]&amp;#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&amp;#39;script&amp;#39;, &amp;#39;noscript&amp;#39;, &amp;#39;style&amp;#39;, &amp;#39;textarea&amp;#39;, &amp;#39;pre&amp;#39;] } }; window.addEventListener(&amp;#39;load&amp;#39;, (event) =&amp;gt; { document.querySelectorAll(&amp;#34;mjx-container&amp;#34;).forEach(function(x){ x.parentElement.classList += &amp;#39;has-jax&amp;#39;}) }); &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://polyfill.</description>
+      <description>Original</description>
     </item>
     
   </channel>
