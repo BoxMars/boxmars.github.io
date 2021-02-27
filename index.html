@@ -23,6 +23,16 @@
 	
 </head>
 
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<style>
+		.steam{
+			margin-top: 10px;
+			max-width: 800px;
+			height: 100px;
+			background-color: dodgerblue;
+			 
+		}
+	</style>
 	<body>
 		<div class="content">
 			<header>
@@ -41,6 +51,9 @@
 			
 			<main class="list">
 				<div class="site-description"></div>
+				<div class="steam">
+
+				</div>
 				
 				
 				
@@ -91,6 +104,11 @@
       feather.replace()
 </script>
 		</div>
-		
+		<script>
+			$.getJSON('https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=52EC44A0D0DA2EE40625F3B43090D50C&steamids=76561198848653822',function(data){
+
+				}
+			)
+		</script>
 	</body>
 </html>
