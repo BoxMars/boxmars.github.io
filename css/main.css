@@ -6,6 +6,12 @@
 --hovercolor:navy;
 --darkMaincolor: #50fa7b;
 }
+code.has-jax {
+     -webkit-font-smoothing: antialiased;
+     background: inherit !important;
+     border: none !important;
+     font-size: 100%;
+ }
 html {
   color: #232333;
   font-family: 'Roboto Mono', monospace;
