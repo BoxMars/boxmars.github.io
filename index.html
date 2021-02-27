@@ -32,6 +32,13 @@
 			background-color: dodgerblue;
 			 
 		}
+		.steam_title{
+			text-align: center;
+			line-height: 100px;
+			font-size: 50px;
+			color: white;
+		}
+
 	</style>
 	<body>
 		<div class="content">
@@ -51,9 +58,9 @@
 			
 			<main class="list">
 				<div class="site-description"></div>
-
-
-
+				<div class="steam">
+					<div class="steam_title">Hello</div>
+				</div>
 				
 				
 				
@@ -106,12 +113,9 @@
 		</div>
 
 	</body>
+	<script>
+			var flickerAPI = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=1E84A0DE4F8DF5D01305FE89A5845710&steamids=76561198848653822";
+			$.getJSON( flickerAPI)
 
-
-
-
-
-
-
-
+	</script>
 </html>
