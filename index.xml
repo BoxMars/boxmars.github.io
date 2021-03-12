@@ -2,63 +2,63 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Box&#39;s Blackboard</title>
-    <link>https://boxmars.life/</link>
+    <link>https://boxz.dev/</link>
     <description>Recent content on Box&#39;s Blackboard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Box ZHANG</copyright>
-    <lastBuildDate>Wed, 24 Feb 2021 12:07:15 +0800</lastBuildDate><atom:link href="https://boxmars.life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Feb 2021 12:07:15 +0800</lastBuildDate><atom:link href="https://boxz.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ethereum Whitepaper</title>
-      <link>https://boxmars.life/posts/ethereum-whitepaper/</link>
+      <link>https://boxz.dev/posts/ethereum-whitepaper/</link>
       <pubDate>Wed, 24 Feb 2021 12:07:15 +0800</pubDate>
       
-      <guid>https://boxmars.life/posts/ethereum-whitepaper/</guid>
+      <guid>https://boxz.dev/posts/ethereum-whitepaper/</guid>
       <description>以太坊白皮书  本篇介绍论文由 Vitalik Buterin 在2013年首次发表。 他是以太坊的创立者，该项目于2015年正是启动。 值得注意的是，以太坊和其他的社区驱动的开源软件项目一样， 自创立之初就不断发展。</description>
     </item>
     
     <item>
       <title>[Forward] Render LaTeX math expressions in Hugo with MathJax 3</title>
-      <link>https://boxmars.life/library/mathjax/</link>
+      <link>https://boxz.dev/library/mathjax/</link>
       <pubDate>Sat, 20 Feb 2021 02:28:55 +0800</pubDate>
       
-      <guid>https://boxmars.life/library/mathjax/</guid>
+      <guid>https://boxz.dev/library/mathjax/</guid>
       <description>Original</description>
     </item>
     
     <item>
       <title>Bitcoin: A Peer-to-Peer Electronic Cash System</title>
-      <link>https://boxmars.life/posts/bitcoin/</link>
+      <link>https://boxz.dev/posts/bitcoin/</link>
       <pubDate>Wed, 17 Feb 2021 15:59:55 +0800</pubDate>
       
-      <guid>https://boxmars.life/posts/bitcoin/</guid>
+      <guid>https://boxz.dev/posts/bitcoin/</guid>
       <description>比特币: 一种端对端的电子货币系统 Author: Satoshi Nakamoto Translator: Box Abstract 一个完全端对端 (purely peer-to-peer) 的电子货币使得由一方发给另一方的在线交易无需经过金融机构。 尽管解决方案中需要数字签名 (digital signature)的支持， 但是如果交易仍然需要第三方的存在来防范双重支付 (double-spending) 的发生的话， 我们将失去数字签名所带来的各项便利。 我们因此提出一种使用端对端网络 (peer-to-peer network) 来解决双重支付问题的方案。 交易网络会通过将交易哈希进一个持续增长的基于哈希工作量证明 (hash-based proof-of-work) 链来打上时间戳， 生成一个无法更改的记录， 除非重做了工作量证明。 最长的连不仅作为一系列交易发生的证明， 还证明了它本身由最大的CPU 算力池 (pool of CPU power) 计算产生。 只要主要的CPU算力在那些不会参与网络攻击的节点控制之下， 它们就会成为生成最长的链并战胜攻击者。 整个网络本身只需要极简的架构。 网络会尽全力广播消息， 节点可以随意的加入或是离开网络， 在再次加入的时候接受最长的工作量证明链来作为他们离开时发生的一切的证据。</description>
     </item>
     
     <item>
       <title>Hello World</title>
-      <link>https://boxmars.life/posts/hello-world/</link>
+      <link>https://boxz.dev/posts/hello-world/</link>
       <pubDate>Wed, 17 Feb 2021 12:07:15 +0800</pubDate>
       
-      <guid>https://boxmars.life/posts/hello-world/</guid>
+      <guid>https://boxz.dev/posts/hello-world/</guid>
       <description>Box is Here.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://boxmars.life/about/</link>
+      <link>https://boxz.dev/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://boxmars.life/about/</guid>
+      <guid>https://boxz.dev/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Search</title>
-      <link>https://boxmars.life/search/</link>
+      <link>https://boxz.dev/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://boxmars.life/search/</guid>
+      <guid>https://boxz.dev/search/</guid>
       <description>search</description>
     </item>
     
