@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on Box&#39;s Blackboard</title>
+    <link>https://boxz.dev/algorithms/</link>
+    <description>Recent content in Algorithms on Box&#39;s Blackboard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Box ZHANG</copyright>
+    <lastBuildDate>Tue, 11 May 2021 20:40:27 +0800</lastBuildDate><atom:link href="https://boxz.dev/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Perfect Squares</title>
+      <link>https://boxz.dev/algorithms/perfectsquares/</link>
+      <pubDate>Tue, 11 May 2021 20:40:27 +0800</pubDate>
+      
+      <guid>https://boxz.dev/algorithms/perfectsquares/</guid>
+      <description>Problem Given an integer $n$, return the least number of perfect square numbers that sum to $n$.</description>
+    </item>
+    
+  </channel>
+</rss>
