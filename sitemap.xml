@@ -3,17 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://boxz.dev/algorithms/</loc>
-    <lastmod>2021-05-11T20:40:27+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://boxz.dev/</loc>
     <lastmod>2021-05-11T20:40:27+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boxz.dev/algorithms/perfectsquares/</loc>
+    <loc>https://boxz.dev/posts/perfectsquares/</loc>
+    <lastmod>2021-05-11T20:40:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://boxz.dev/posts/</loc>
     <lastmod>2021-05-11T20:40:27+08:00</lastmod>
   </url>
   
@@ -29,11 +29,6 @@
   
   <url>
     <loc>https://boxz.dev/posts/bitcoin/</loc>
-    <lastmod>2021-02-17T15:59:55+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://boxz.dev/posts/</loc>
     <lastmod>2021-02-17T15:59:55+08:00</lastmod>
   </url>
   

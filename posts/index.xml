@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Box ZHANG</copyright>
-    <lastBuildDate>Wed, 17 Feb 2021 15:59:55 +0800</lastBuildDate><atom:link href="https://boxz.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 May 2021 20:40:27 +0800</lastBuildDate><atom:link href="https://boxz.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Perfect Squares</title>
+      <link>https://boxz.dev/posts/perfectsquares/</link>
+      <pubDate>Tue, 11 May 2021 20:40:27 +0800</pubDate>
+      
+      <guid>https://boxz.dev/posts/perfectsquares/</guid>
+      <description>Problem Given an integer $n$, return the least number of perfect square numbers that sum to $n$.</description>
+    </item>
+    
     <item>
       <title>Bitcoin: A Peer-to-Peer Electronic Cash System</title>
       <link>https://boxz.dev/posts/bitcoin/</link>
