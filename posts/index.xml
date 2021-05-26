@@ -10,20 +10,11 @@
     <lastBuildDate>Tue, 11 May 2021 20:40:27 +0800</lastBuildDate><atom:link href="https://boxz.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Perfect Squares</title>
-      <link>https://boxz.dev/posts/perfectsquares/</link>
+      <link>https://boxz.dev/posts/algorithms/perfectsquares/</link>
       <pubDate>Tue, 11 May 2021 20:40:27 +0800</pubDate>
       
-      <guid>https://boxz.dev/posts/perfectsquares/</guid>
+      <guid>https://boxz.dev/posts/algorithms/perfectsquares/</guid>
       <description>Problem Given an integer $n$, return the least number of perfect square numbers that sum to $n$.</description>
-    </item>
-    
-    <item>
-      <title>Ethereum Whitepaper</title>
-      <link>https://boxz.dev/posts/ethereum-whitepaper/</link>
-      <pubDate>Wed, 24 Feb 2021 12:07:15 +0800</pubDate>
-      
-      <guid>https://boxz.dev/posts/ethereum-whitepaper/</guid>
-      <description>以太坊白皮书  本篇介绍论文由 Vitalik Buterin 在2013年首次发表。 他是以太坊的创立者，该项目于2015年正是启动。 值得注意的是，以太坊和其他的社区驱动的开源软件项目一样， 自创立之初就不断发展。</description>
     </item>
     
     <item>
