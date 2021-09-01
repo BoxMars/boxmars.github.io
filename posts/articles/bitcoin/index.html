@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Bitcoin: A Peer-to-Peer Electronic Cash System - Box Zhang</title><meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:description" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="description" content="" />
+	<meta name="description" content="" />
+
+	<meta property="og:title" content="Bitcoin: A Peer-to-Peer Electronic Cash System | Box Zhang" />
+	<meta name="twitter:title" content="Bitcoin: A Peer-to-Peer Electronic Cash System | Box Zhang" />
+
+	<meta property="og:image" content=""/>
+	<meta itemprop="name" content="Bitcoin: A Peer-to-Peer Electronic Cash System | Box Zhang" />
+	<meta name="application-name" content="Bitcoin: A Peer-to-Peer Electronic Cash System | Box Zhang" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:title" content="Bitcoin: A Peer-to-Peer Electronic Cash System" />
+<meta property="og:description" content="比特币: 一种端对端的电子货币系统 Author: Satoshi Nakamoto Translator: Box Abstract 一个完全端对端 (purely peer-to-peer) 的电子货币使得由一方发给另一方的在线交易无需经过金融机构。 尽管解决方案中需要数字签名 (digital signature)的支持， 但是如果交易仍然需要第三方的存在来防范双重支付 (double-spending) 的发生的话， 我们将失去数字签名所带来的各项便利。 我们因此提出一种使用端对端网络 (peer-to-peer network) 来解决双重支付问题的方案。 交易网络会通过将交易哈希进一个持续增长的基于哈希工作量证明 (hash-based proof-of-work) 链来打上时间戳， 生成一个无法更改的记录， 除非重做了工作量证明。 最长的连不仅作为一系列交易发生的证明， 还证明了它本身由最大的CPU 算力池 (pool of CPU power) 计算产生。 只要主要的CPU算力在那些不会参与网络攻击的节点控制之下， 它们就会成为生成最长的链并战胜攻击者。 整个网络本身只需要极简的架构。 网络会尽全力广播消息， 节点可以随意的加入或是离开网络， 在再次加入的时候接受最长的工作量证明链来作为他们离开时发生的一切的证据。
+1. Introduction 互联网上发生的商业几乎全部依赖金融机构作为被信任的第三方来处理电子交易。 尽管对于大多数和交易来说， 整个系统运作地足够优秀， 但是它在信任模型 (trust based model) 仍然存在一些固有的缺点。 由于金融机构不可避免地需要调解纠纷， 所以完全不可逆地交易时不可能的。 调解纠纷所需要的成本增加了交易的成本， 限制了最小交易金额， 消除了小额临时交易地可能性。 由于不支持不可逆地地交易的发生， 因此对于不可撤销服务进行支付需要更大的成本。 由于交易可逆， 因此信任的需求更加广泛。 商家必须更加警惕他们的客户， 向他们所需一些他们本来不需要的信息。 一定比例的欺诈被认为是不可避免的。 如果人们选择使用物理货币进行交易，那么可以避免这些成本和交易的不确定性， 但是不存在不需要信任的第三方而能在通讯管道进行交易的商家。
+我们所需要的是一种基于密码学证明而不是信任的电子货币交易系统， 它允许任意的两方直接交易而不需要一个信任的第三方。 计算上不可逆的交易将会保护销售者不会受到诈骗。 用来保护购买者的程序化合约机制 (routine escrow mechanisms) 也容易实现。 在本篇文章中我们提出了解决双重支付的方案， 它使用端对端分布式时间戳服务来生成基于交易时间顺序的计算证明。 只要诚信的节点控制下的CPU算力超过那些合作攻击的节点的CPU算力， 整个网络就是安全的。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://boxz.dev/posts/articles/bitcoin/" />
+<meta property="article:published_time" content="2021-02-17T15:59:55+08:00" />
+<meta property="article:modified_time" content="2021-02-17T15:59:55+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bitcoin: A Peer-to-Peer Electronic Cash System"/>
+<meta name="twitter:description" content="比特币: 一种端对端的电子货币系统 Author: Satoshi Nakamoto Translator: Box Abstract 一个完全端对端 (purely peer-to-peer) 的电子货币使得由一方发给另一方的在线交易无需经过金融机构。 尽管解决方案中需要数字签名 (digital signature)的支持， 但是如果交易仍然需要第三方的存在来防范双重支付 (double-spending) 的发生的话， 我们将失去数字签名所带来的各项便利。 我们因此提出一种使用端对端网络 (peer-to-peer network) 来解决双重支付问题的方案。 交易网络会通过将交易哈希进一个持续增长的基于哈希工作量证明 (hash-based proof-of-work) 链来打上时间戳， 生成一个无法更改的记录， 除非重做了工作量证明。 最长的连不仅作为一系列交易发生的证明， 还证明了它本身由最大的CPU 算力池 (pool of CPU power) 计算产生。 只要主要的CPU算力在那些不会参与网络攻击的节点控制之下， 它们就会成为生成最长的链并战胜攻击者。 整个网络本身只需要极简的架构。 网络会尽全力广播消息， 节点可以随意的加入或是离开网络， 在再次加入的时候接受最长的工作量证明链来作为他们离开时发生的一切的证据。
+1. Introduction 互联网上发生的商业几乎全部依赖金融机构作为被信任的第三方来处理电子交易。 尽管对于大多数和交易来说， 整个系统运作地足够优秀， 但是它在信任模型 (trust based model) 仍然存在一些固有的缺点。 由于金融机构不可避免地需要调解纠纷， 所以完全不可逆地交易时不可能的。 调解纠纷所需要的成本增加了交易的成本， 限制了最小交易金额， 消除了小额临时交易地可能性。 由于不支持不可逆地地交易的发生， 因此对于不可撤销服务进行支付需要更大的成本。 由于交易可逆， 因此信任的需求更加广泛。 商家必须更加警惕他们的客户， 向他们所需一些他们本来不需要的信息。 一定比例的欺诈被认为是不可避免的。 如果人们选择使用物理货币进行交易，那么可以避免这些成本和交易的不确定性， 但是不存在不需要信任的第三方而能在通讯管道进行交易的商家。
+我们所需要的是一种基于密码学证明而不是信任的电子货币交易系统， 它允许任意的两方直接交易而不需要一个信任的第三方。 计算上不可逆的交易将会保护销售者不会受到诈骗。 用来保护购买者的程序化合约机制 (routine escrow mechanisms) 也容易实现。 在本篇文章中我们提出了解决双重支付的方案， 它使用端对端分布式时间戳服务来生成基于交易时间顺序的计算证明。 只要诚信的节点控制下的CPU算力超过那些合作攻击的节点的CPU算力， 整个网络就是安全的。"/>
+<script src="https://boxz.dev/js/feather.min.js"></script>
+	
+	<link href="https://boxz.dev/css/fonts.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://boxz.dev/css/main.css" />
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://boxz.dev/">Box Zhang</a>
+	</div>
+	<nav>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Bitcoin: A Peer-to-Peer Electronic Cash System</h1>
+		</div>
+		
+
+		<section class="body">
+			<h1 id="比特币-一种端对端的电子货币系统">比特币: 一种端对端的电子货币系统</h1>
+<h4 id="author-satoshi-nakamotocenter">Author: Satoshi Nakamoto</center></h4>
+<h4 id="translator-box">Translator: Box</h4>
+<h3 id="abstract">Abstract</h3>
+<p>一个完全端对端 (purely peer-to-peer) 的电子货币使得由一方发给另一方的在线交易无需经过金融机构。
+尽管解决方案中需要数字签名 (digital signature)的支持， 但是如果交易仍然需要第三方的存在来防范双重支付 (double-spending) 的发生的话， 我们将失去数字签名所带来的各项便利。
+我们因此提出一种使用端对端网络 (peer-to-peer network) 来解决双重支付问题的方案。
+交易网络会通过将交易哈希进一个持续增长的基于哈希工作量证明 (hash-based proof-of-work) 链来打上时间戳， 生成一个无法更改的记录， 除非重做了工作量证明。
+最长的连不仅作为一系列交易发生的证明， 还证明了它本身由最大的CPU 算力池 (pool of CPU power) 计算产生。
+只要主要的CPU算力在那些不会参与网络攻击的节点控制之下， 它们就会成为生成最长的链并战胜攻击者。
+整个网络本身只需要极简的架构。
+网络会尽全力广播消息， 节点可以随意的加入或是离开网络， 在再次加入的时候接受最长的工作量证明链来作为他们离开时发生的一切的证据。</p>
+<h3 id="1-introduction">1. Introduction</h3>
+<p>互联网上发生的商业几乎全部依赖金融机构作为被信任的第三方来处理电子交易。
+尽管对于大多数和交易来说， 整个系统运作地足够优秀， 但是它在信任模型 (trust based model) 仍然存在一些固有的缺点。
+由于金融机构不可避免地需要调解纠纷， 所以完全不可逆地交易时不可能的。
+调解纠纷所需要的成本增加了交易的成本， 限制了最小交易金额， 消除了小额临时交易地可能性。
+由于不支持不可逆地地交易的发生， 因此对于不可撤销服务进行支付需要更大的成本。
+由于交易可逆， 因此信任的需求更加广泛。
+商家必须更加警惕他们的客户， 向他们所需一些他们本来不需要的信息。
+一定比例的欺诈被认为是不可避免的。
+如果人们选择使用物理货币进行交易，那么可以避免这些成本和交易的不确定性， 但是不存在不需要信任的第三方而能在通讯管道进行交易的商家。</p>
+<p>我们所需要的是一种基于密码学证明而不是信任的电子货币交易系统， 它允许任意的两方直接交易而不需要一个信任的第三方。
+计算上不可逆的交易将会保护销售者不会受到诈骗。
+用来保护购买者的程序化合约机制 (routine escrow mechanisms) 也容易实现。
+在本篇文章中我们提出了解决双重支付的方案， 它使用端对端分布式时间戳服务来生成基于交易时间顺序的计算证明。
+只要诚信的节点控制下的CPU算力超过那些合作攻击的节点的CPU算力， 整个网络就是安全的。</p>
+<h3 id="2-transactions-交易">2. Transactions (交易)</h3>
+<p>我们定义一枚电子货币就是一个数字签名链。
+每一个持有者通过对上一次交易的哈希值和下一个拥有者的公钥进行数字签名并把他们添加至货币的末尾来将这枚货币移交给下一个所有者。
+收款人可以通过验证签名来验证链的所有权。</p>
+<p><img src="/img/bitcoin_1.png" alt="1"></p>
+<p>整个过程的问题是收款人不能确认的货币所有者中是否有人对货币进行了双重支付 (double-spending)。
+一个常见的解决方案是引入一个受信任的中央机构或者一个铸币厂来检查每一次交易是否有双重支付的发生。
+在每一次交易之后， 货币必须返回铸币厂以发行新的货币， 只有从铸币厂直接发行的货币才会被认为是没有双重支付的货币。
+这个方案的问题在于因为每一次交易都必须通过铸币厂， 整个货币系统的命运与运营铸币厂的公司的命运紧紧绑定。
+我们需要一种收款人可以确认之前的拥有者没有签名更早的交易的方法。
+出于这样的目的， 最早的交易记录是唯一有效的， 所以我们并关心之后双重支付的尝试。
+确认交易不存在的唯一方法是知晓所有的交易。
+在铸币厂的基本模型中， 铸币厂知晓所有的交易并能确定哪一笔交易先到达。
+为了在没有信任方的情况完成交易， 那么交易必须被公开[1]。
+我们需要一个能让所有参与者对交易收到的顺序所构成的单一记录达成共识的系统。
+收款方在每一次交易发生的时候都需要多数节点认同此交易时最先到达的证据。</p>
+<h3 id="3-timestamp-server-时间戳服务器">3. Timestamp Server (时间戳服务器)</h3>
+<p>我们所提出的解决方案从时间戳服务器开始。
+时间戳服务区计算多个被打上时间戳的数据项的区块的哈希值，并且广泛的发布这些哈希值， 比如在报纸上或者在Usenet上发布帖子[2-5]。
+时间戳能证明如果得到了这个哈希值那么在某个特定时间， 数据一定是存在的。
+在每一个时间戳中都包含了上一个时间戳的哈希值，从而形成一条链。
+每新添一条时间戳都加强了他之前的时间戳。</p>
+<p><img src="/img/bitcoin_2.png" alt="2"></p>
+<h3 id="4-proof-of-work-工作量证明">4. Proof-of-work (工作量证明)</h3>
+<p>为了实现在端对端基础上的分布式时间戳服务器， 我们需要使用类似Adam Back&rsquo;s Hashcash[6]的工作量证明系统， 而不是报纸或者Usenet帖子。
+工作量证明会选取一个数，是的他在被哈希时， 比如SHA-256， 哈希值由多个零比特开始。
+所需工作量的平均值与零比特的数呈指数关系， 而且可以验证只需一次哈希计算。</p>
+<p>对于我们的时间戳服务器， 我们通过在区块中加入一个随机数直到找到一个数使得区块的哈希值满足所需的零比特数的方式来实现工作量证明。
+一旦消耗了CPU的算力使得计算满足了工作量证明， 区块将不可被改变， 除非重新进行计算。
+当后面的区块连接到后面时， 要改变这个区块就需要重新计算后面所有的区块。</p>
+<p><img src="/img/bitcoin_3.png" alt="3"></p>
+<p>工作量证明同样解决了在多数决策中确定代表的问题。
+如果是按照一个IP地址一票的投票方式， 那么能够掌握许多IP地址的用户会破坏整个机制。
+工作量证明本质上时一个CPU一票。
+最长的链代表了多数投票决定的结果， 它同时也具有最大的工作量证明的经历被投资在上面。
+如果大多数的计算资源被诚信的节点控制， 那么诚信的链增长最快并击败其他竞争的链。
+为了修改过去的区块， 攻击者必须重新对这个区块以及之后的所有区块进行工作量证明的计算， 跟上并超过诚实节点的计算工作。
+我们随后会证明随着后续区块的加入，更慢的攻击者追赶上诚信节点的概率呈指数形式递减。</p>
+<p>为了补偿硬件速度增加和个个运行中的节点之间的随时间变化的不同利益， 工作量证明的难度由移动平均数法来确定每小时的平均区块数。
+如果它们生成的太快， 难度将会增加。</p>
+<h3 id="5-network-网络">5. Network (网络)</h3>
+<p>运行整个网络的步骤如下</p>
+<ol>
+<li>向网络中的所有节点广播新的交易</li>
+<li>每一个节点将新交易收集到一个区块</li>
+<li>每一个节点为区块寻找工作量证明</li>
+<li>当一个节点找到了工作量证明， 将这个区块广播给所有节点</li>
+<li>如果里面的交易合法而且没有被支付， 这个区块将会被节点认可</li>
+<li>节点通过使用被认可的区块哈希值作为上一个哈希值 (previous hash) 计算新的节点的方式来表示对这个区块的认可</li>
+</ol>
+<p>节点总是把最长的链认为是正确的并且持续扩展它。
+如果两个节点同时广播了下一个区块的不同分支， 其他节点会首先接收到它们两者中的一个。
+在这种情况下， 节点会检查他们首先受到的分支并保存另一个分支， 以防止变成更长的链。
+当下一个工作量证明被找到的时候， 这个僵局会被打破， 然后其中一个分支会边长， 工作在另一个分支的节点会切换到更长的链上。</p>
+<p>新交易的广播无需告知每一个节点。
+只要一些节点接收到了广播， 新的区块不久就会进去链中。
+区块广播同时也容忍信息的缺失。
+如果一个节点没有收到区块，它会在收到下一个区块的时候发现存在缺失并请求相应的区块。</p>
+<h3 id="6-incentive-激励措施">6. Incentive (激励措施)</h3>
+<p>我们约定，一个区块中的第一笔交易是记录了发行一笔新的货币给区块创建者的特殊交易。
+这增加了节点对支持网络的激励， 同时提供一种分发货币到流通领域的方式， 因为没有中央机构来发行。
+新货币按照固定量稳定增加就像金矿工人消耗资源增加黄金到流通量领域一样。
+就我们而言， 是CPU的时间和电力被消耗。</p>
+<p>激励也可以用交易手续费来充当。 如果一笔交易的输出值小于它的输入值， 它们之间的差值就是作为这笔交易所在区块的激励的手续费。 一旦预定数量的货币进入了流通领域， 那么手续费将作为全部的激励， 而且不存在通胀。</p>
+<p>激励可能有助于保持节点的诚信。 如果攻击者控制的CPU算力超过了诚实的节点CPU算力之和，他可能会面临取消已经支付的交易来欺骗人们或是给自己发行新货币的抉择。 他应该会意识到按照规则进行游戏比破坏系统和他财产的合法性得到收益更大， 因为规则使得他比其他所有人都更容易获得新货币。</p>
+<h3 id="7-reclaiming-disk-space-回收磁盘空间">7. Reclaiming Disk Space (回收磁盘空间)</h3>
+<p>一旦某些货币的最新交易被做狗的区块覆盖， 那么这之前的支付交易就可以被丢弃以节省磁盘空间。 为了在实现这一点的同时而不破坏节点的哈希值， 交易需要被哈希进一个Merkle Tree[7] [2] [5] (默克尔树), 只有根哈希会参与到区块哈希值的计算中。 老的区块可以通过剪除树枝老研所空间。 内部的哈希值无需被保存。</p>
+<p><img src="/img/bitcoin_4.png" alt="4"></p>
+<p>没有交易记录的区块头的大小为80字节左右。 如果假设每十分钟生成一个区块，
+$80\ bytes\times 6\times 24 \times 365=4.2\ MB$ 每年。 2008年的在售的电脑大多为2GB的RAM， 并且摩尔定律预言了RAM的增长速率是1.2GB每年。
+即使把区块头存入RAM中， 储存空间也不是问题。</p>
+<h3 id="8-simplified-payment-verification-简化支付验证">8. Simplified Payment Verification (简化支付验证)</h3>
+<p>不运行整个网络节点也是可以进行支付验证的。 用户只需要保存有它能在节点中查询到的最长的工作量证明链的区块头副本，他也可以向整个网络节点查询知道确认为最长的链，然后获取给交易打上时间戳的区块的默克尔分支。
+他不能自己核实交易， 但是如果交一份连接到链中，说明整个网络节点认可了它并后续会有区块链接到后面可以进一步确认整个网络认可了交易。</p>
+<p><img src="/img/bitcoin_5.png" alt="5"></p>
+<p>这样，只要网络在诚信节点的控制之下， 简化后的验证就是可信的， 但是如果网络被攻击者控制， 那么简化验证就变得更加不可靠。 虽然网络节点可以自己验证交易的合法性， 但是只要攻击者控制了整个网络，简化的验证会被攻击者伪造的交易所欺骗。
+一个反制策略是接受网络节点侦测到不合法区块时发出的警告， 提示用户软件下载完成的区块和被警告的交易来确认存在不一致。
+为了更独立的安全性和更快速的验证，收款频繁的商业公司可能需要运营他们自己的节点。</p>
+<h3 id="9-combining-and-splitting-value-合并和分割交易额">9. Combining and Splitting Value (合并和分割交易额)</h3>
+<p>尽管我们可以选择独立的处理货币， 但是经每一次转账拆成多笔交易是非常笨拙的。
+为了能够合并和分割交易额， 交易记录必须包含多个输入与输出。
+通常是有一个来自之前的大额交易的单一输入或者许多小额交易组合在一起的多个输入， 和最多两个的输出， 一个用于支付， 一个用于找零， 即退还给付款方。</p>
+<p><img src="/img/bitcoin_6.png" alt="6"></p>
+<p>注意这里的扇出 (fan-out: the number of inputs that can be connected to a specified output)，即一笔交易所依赖的交易数， 这些交易需要更多交易的支持， 这里不存在问题。 我们不需要获取一笔交易完整的交易历史副本。</p>
+<h3 id="10-privacy-隐私">10 Privacy (隐私)</h3>
+<p>传统银行业模型通过限制一笔交易参与方和信任第三方的信息的访问来实现隐私保护。 这种方法剔除了交易被公开的必要性， 但是通过在其他地方阻断信息流的方式隐私仍然可以被保护： 通过保持公钥的匿名。
+公众可以得知的是一笔钱从一个人发送给了另一个人， 但是不能把这笔交易和现实中的人挂钩。
+这类似于股票交易的信息级别， 每笔交易的时间和交易量是公开的， 但是无从得知交易的双方是谁。</p>
+<p><img src="/img/bitcoin_7.png" alt="7"></p>
+<p>作为额外的防火墙， 对每笔交易使用心得密钥可以防止他们被联系到一个共同的拥有者。
+对于有多个输入的交易， 一定的联系是不可避免的， 因为这必然表明了他们的所有者是同一个人。
+风险在于，雨果拥有者的密钥泄露，那么由于关联的存在， 属于这个拥有着的交易记录也会泄露。</p>
+<h3 id="11-calculations-计算">11. Calculations (计算)</h3>
+<p>我们考虑攻击者试图生成新链的速度大于诚实节点的情况。
+即使攻击者真的做到了， 他也不能对系统做出任意的更改， 比如凭空创造货币， 或者拿走本不属于攻击者的钱。
+其他的既然电视不会接受非法的交易记录作为支付的。 诚信的节点也不会接受包含非法交易记录的区块。
+攻击者能做偶的只有尝试改变他之前的某笔交易记录，取回他之前消费过的钱。</p>
+<p>诚实链和攻击链之间的比赛可以被描述为二项随机漫步 (Binomial Random Walk)。 成功时间是诚实链增加了一个区块，两条链的差距$+1$， 失败事件是攻击链增加了一个新的区块， 两条链的差距$-1$。</p>
+<p>攻击者从一给定的位置 (deficit) 追上诚信链的概率可以被描述为赌徒破产理论 (Gambleer&rsquo;s Ruin problem)。
+假设一个有无限信用的赌徒从一定的亏损开始， 可以进行无数轮游戏以达到收支平衡。
+我们可以计算出他收支平衡的概率， 或者攻击者赶上诚信链的概率， 如下[8]：</p>
+<p>$p=$ 诚信节点找到下一个区块的概率</p>
+<p>$q=$ 攻击者找到下一个区块的概率</p>
+<p>$q_z=$ 攻击者从落后 $z$ 个区块赶上诚信链的概率
+$$q_z=1,p\leq q$$</p>
+<p>$$q_z=(\frac{q}{p})^2,p&gt;q$$</p>
+<p>我们假设$p&gt;q$，那么随着攻击者需要追赶的区块数目的增长，概率成指数下降。
+随着形势不利于他，如果他在早期没有及时赶上，那么他赶上的机会将变得越来越渺茫。</p>
+<p>我们现在考虑一笔交易的收款方需要等待多长的时间才能确定付款方不会改变交易。
+我们假设付款方让收款方相信他已经付款，但是之后又变成支付给他自己。
+收款方将会受到关于此事的警告， 但是付款方希望他收到警告时已经晚了。</p>
+<p>收款方生成一个新的密钥并在签名前不久把公钥告诉付款人。
+这防止了付款方通过继续不断地计算知道他足够幸运地超过了诚信链的方式事先准备一条区块链，然后进行交易。
+一旦交易被发送， 不诚信的付款方开始秘密的计算一条可以顶替现有链的区块链。</p>
+<p>收款方要等到交易被添加到区块中，并且后续有$z$ 个区块被连接上。
+他并不知道攻击者所做的确切进度， 但是假设诚信区块的产生速度达到了期待的平均值。攻击者潜在的进度是一个泊松分布 (Poisson distribution)，期望值为</p>
+<p>$$\lambda=z\frac{q}{p}$$</p>
+<p>为了得到攻击者仍能赶上的概率， 我们把他能到达的每一个进度的泊松密度乘以从那一点赶上诚信链进度的概率：</p>
+<p><img src="/img/bitcoin_8.png" alt="8"></p>
+<p>化简：
+$$1-\sum_{k=0}^z\frac{\lambda^ke^{-\lambda}}{k!}(1-(\frac{q}{p})^{z-k})$$</p>
+<p>转换成C语言代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;math.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">double</span> <span style="color:#a6e22e">AttackerSuccessProbability</span>(<span style="color:#66d9ef">double</span> q, <span style="color:#66d9ef">int</span> z)
+{
+    <span style="color:#66d9ef">double</span> p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> q;
+    <span style="color:#66d9ef">double</span> lambda <span style="color:#f92672">=</span> z <span style="color:#f92672">*</span> (q <span style="color:#f92672">/</span> p);
+    <span style="color:#66d9ef">double</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>;
+    <span style="color:#66d9ef">int</span> i, k;
+    <span style="color:#66d9ef">for</span> (k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; k <span style="color:#f92672">&lt;=</span> z; k<span style="color:#f92672">++</span>)
+    {
+        <span style="color:#66d9ef">double</span> poisson <span style="color:#f92672">=</span> exp(<span style="color:#f92672">-</span>lambda);
+        <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> k; i<span style="color:#f92672">++</span>)
+            poisson <span style="color:#f92672">*=</span> lambda <span style="color:#f92672">/</span> i;
+        sum <span style="color:#f92672">-=</span> poisson <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> pow(q <span style="color:#f92672">/</span> p, z <span style="color:#f92672">-</span> k));
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+</code></pre></div><p>运行结果显示概率随z呈指数递减</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">q=0.1
+z=0     P=1.0000000
+z=1     P=0.2045873
+z=2     P=0.0509779
+z=3     P=0.0131722
+z=4     P=0.0034552
+z=5     P=0.0009137
+z=6     P=0.0002428
+z=7     P=0.0000647
+z=8     P=0.0000173
+z=9     P=0.0000046
+z=10    P=0.0000012
+
+q=0.3
+z=0     P=1.0000000
+z=5     P=0.1773523
+z=10    P=0.0416605
+z=15    P=0.0101008
+z=20    P=0.0024804
+z=25    P=0.0006132
+z=30    P=0.0001522
+z=35    P=0.0000379
+z=40    P=0.0000095
+z=45    P=0.0000024
+z=50    P=0.0000006
+</code></pre></div><p>当$P&lt;0.1%$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">P &lt; 0.001
+q=0.10  z=5
+q=0.15  z=8
+q=0.20  z=11
+q=0.25  z=15
+q=0.30  z=24
+q=0.35  z=41
+q=0.40  z=89
+q=0.45  z=340
+</code></pre></div><h3 id="12-conclusion">12. Conclusion</h3>
+<p>我们已经提出了一种不依赖信任的电子交易系统。
+我们从由数字签名产生货币的传统框架开始， 这个框架有者对所有权强有力的控制， 但是它在防范双重支付方面做的并不完善。
+为了解决这个问题， 我们提出了一种使用工作量证明来记录交易的公开历史的端对端网络， 只要诚信节点控制了大多数的CPU算力， 那么对于攻击者而言， 记录很快就变得在计算上不可篡改。
+整个网络有着强大的非结构化简洁性。
+节点只需要很小的协调就能协同工作。
+他们不需要被确认身份， 因为信息并不会发送到特定的地方， 而是尽可能的广播。
+节点可以随意地加入或是离开， 并就是工作量证明连作为他们离开时网络中发生的一切的证据。
+他们按照CPU算力投票， 通过继续延长合法区块，拒绝非法区块的方式表达他们对合法区块链的认可。
+任何需要的规则和激励都可以通过这个共识机制来加强。</p>
+<h3 id="references">References</h3>
+<ol>
+<li>W. Dai, &ldquo;b-money,&rdquo; <a href="http://www.weidai.com/bmoney.txt,">http://www.weidai.com/bmoney.txt,</a> 1998.</li>
+<li>H. Massias, X.S. Avila, and J.-J. Quisquater, &ldquo;Design of a secure timestamping service with minimal trust requirements,&rdquo; In <em>20th Symposium on Information Theory in the Benelux</em>, May 1999.</li>
+<li>S. Haber, W.S. Stornetta, &ldquo;How to time-stamp a digital document,&rdquo; In <em>Journal of Cryptology, vol 3</em>, no 2, pages 99-111, 1991.</li>
+<li>D. Bayer, S. Haber, W.S. Stornetta, &ldquo;Improving the efficiency and reliability of digital time-stamping,&rdquo; In <em>Sequences II: Methods in Communication, Security and Computer Science</em>, pages 329-334, 1993.</li>
+<li>S. Haber, W.S. Stornetta, &ldquo;Secure names for bit-strings,&rdquo; In <em>Proceedings of the 4th ACM Conference on Computer and Communications Security</em>, pages 28-35, April 1997.</li>
+<li>A. Back, &ldquo;Hashcash - a denial of service counter-measure,&rdquo; <a href="http://www.hashcash.org/papers/hashcash.pdf,">http://www.hashcash.org/papers/hashcash.pdf,</a> 2002.</li>
+<li>R.C. Merkle, &ldquo;Protocols for public key cryptosystems,&rdquo; In <em>Proc. 1980 Symposium on Security and Privacy</em>, IEEE Computer Society, pages 122-133, April 1980.</li>
+<li>W. Feller, &ldquo;An introduction to probability theory and its applications,&rdquo; 1957.</li>
+</ol>
+
+		</section>
+
+		<div class="meta">Posted on Feb 17, 2021</div>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/boxmars" title="GitHub"><i data-feather="github"></i></a>|⚡️
+	2021  © Box ZHANG |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script></div>
+    </body>
+</html>
