@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Box ZHANG</copyright>
-    <lastBuildDate>Tue, 11 May 2021 20:40:27 +0800</lastBuildDate><atom:link href="https://boxz.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Sep 2021 22:48:40 +0800</lastBuildDate><atom:link href="https://boxz.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Convert Epsilon-NFA to NFA</title>
+      <link>https://boxz.dev/posts/articles/convert_epsilonnfa_to_nfa/</link>
+      <pubDate>Thu, 02 Sep 2021 22:48:40 +0800</pubDate>
+      
+      <guid>https://boxz.dev/posts/articles/convert_epsilonnfa_to_nfa/</guid>
+      <description>$\epsilon$-NFA There exist $\epsilon$-transitions that allow state changes without using any input symbol.
+$\epsilon$-Closures In an $\epsilon$-NFA, the $\epsilon CLOSE(q)$ of a state $q$ is the set of states (including $q$ ) that can be reached from q by following a path whose edges are all labeled by $\epsilon$.
+$\epsilon$-NFA $\Rightarrow$ NFA Given any $\epsilon$-NFA $M=(Q,\Sigma,\delta,q_0,F)$ recognizing a language $L$ over $\Sigma$, we can construce its NFA $N=(Q,\Sigma,\delta&#39;,q_0,F&#39;)$ that also recognizes $L$:</description>
+    </item>
+    
     <item>
       <title>Perfect Squares</title>
       <link>https://boxz.dev/posts/articles/perfectsquares/</link>
