@@ -20,6 +20,15 @@ $\epsilon$-NFA $\Rightarrow$ NFA Given any $\epsilon$-NFA $M=(Q,\Sigma,\delta,q_
     </item>
     
     <item>
+      <title>Binary Number</title>
+      <link>https://boxz.dev/posts/articles/binary_number/</link>
+      <pubDate>Thu, 02 Sep 2021 18:09:37 +0800</pubDate>
+      
+      <guid>https://boxz.dev/posts/articles/binary_number/</guid>
+      <description>Binary Terms  A binary digit is called a bit (BInary digiT) A group of four bits is called a nibble A group of eight bits (or two nibbles) is called a byte The Most significant bit (MSB) is the left-most bit The least significant bit (LSB) is the right-most bit  Representing Signed Binary Numbers Binary numbers which can only represent 0 or positive numbers are known as unsigned numbers</description>
+    </item>
+    
+    <item>
       <title>Perfect Squares</title>
       <link>https://boxz.dev/posts/articles/perfectsquares/</link>
       <pubDate>Tue, 11 May 2021 20:40:27 +0800</pubDate>
