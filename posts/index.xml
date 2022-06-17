@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Box ZHANG</copyright>
-    <lastBuildDate>Thu, 02 Sep 2021 22:48:40 +0800</lastBuildDate><atom:link href="https://boxz.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Sep 2021 23:04:56 +0800</lastBuildDate><atom:link href="https://boxz.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Naive Bayes</title>
+      <link>https://boxz.dev/posts/articles/naivebayes/</link>
+      <pubDate>Sun, 12 Sep 2021 23:04:56 +0800</pubDate>
+      
+      <guid>https://boxz.dev/posts/articles/naivebayes/</guid>
+      <description>Conditional Probability and Bayesian rule Since $$P(A|B)=\frac{P(A\cap B)}{P(B)}$$ We can get $$P(A \cap B)=P(A|B)P(B)$$ and $$P(A \cap B)=P(B|A)P(A)$$ If we have $n$ events $B_i$ which is indenpendent, i.e. $$\forall B_i, \forall B_j, B_i\cap B_j=\emptyset$$ and $$\cup_{i=1}^n B_i=S$$ Then $$P(A \cap B_1)=P(A|B_1)P(B_1)$$ $$P(A \cap B_2)=P(A|B_2)P(B_2)$$ $$P(A \cap B_3)=P(A|B_3)P(B_3)$$ $$&amp;hellip;$$ $$P(A \cap B_n)=P(A|B_n)P(B_n)$$ $$\sum_{i=1}^n P(A\cap B_i)=\sum_{i=1}^nP(A|B_i)P(B_i)$$ We get the formula $$P(A)=\sum_{i=1}^nP(A|B_i)P(B_i)$$
+Bayesian reasoning $$P(H|E)=\frac{P(E|H)P(H)}{P(E|H)P(H)+P(E|\neg H)P(\neg H)}$$ where
+ $P(H)$ is the prior probability oh the hypothesis $H$ being true $P(E|H)$ is the probability that hypothesis $H$ being yrue will result in evidence $E$ $P(\neg H)$ is the prior probability of hypothesis $H$ being false $P(E|\neg H)$ is the probability of finding evidence $E$ even when hypothesis $H$ is false   </description>
+    </item>
+    
     <item>
       <title>Convert Epsilon-NFA to NFA</title>
       <link>https://boxz.dev/posts/articles/convert_epsilonnfa_to_nfa/</link>
@@ -67,14 +78,11 @@ Adapted for MathJax 3 The code below is a modification of Doswa’s code which l
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://boxz.dev/posts/about/</guid>
-      <description>Study Computer Science in University of Macau.
+      <description>Education Study Computer Science in University of Macau. Graduation in 2023
 Looking for CS-related research opportunity. Email
-I am Machine Learning Engineer Intern at Fitlab.ai in Shenzhen since September 2021,
-leading the development of several web projects in university, and
-a member of 🧭UMHelper. We have some great open-source projects:
- 🌌UMEH Web Front-end  🪐UMEH Miniprogram Front-end  🌍UMEH Back-end  Learning 📕Algorithms.
-#python #JavaDev #web_full_stack_dev
-More about me. 🤖Blog 📟Notes 👻GPG Public Key</description>
+Work Experience I am a Research Assistant at Educational Research Centre, FED in University of Macau since March 2022, focus on:
+ Big Data Analysis Internet Public Opinion Analysis,  and a Machine Learning Engineer Intern at Fitlab.ai in Shenzhen since September 2021, focus on:
+ Hardware Video Codec Synchronization of Multiple Video Streams  Project I am leading or participating in several software development group in university, and</description>
     </item>
     
   </channel>
