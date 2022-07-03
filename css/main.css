@@ -44,7 +44,7 @@ blockquote {
 }
 
 a {
-  border-bottom: 3px solid var(--maincolor);
+  border-bottom: 2px solid var(--maincolor);
   color: inherit;
   text-decoration: none;
 }
@@ -56,13 +56,19 @@ a:hover {
 ul {
   list-style: none;
   padding-left: 2ch;
+  margin-top: -0.5em;
 }
 ul li {
-  text-indent: -2ch;
+  text-indent: -1ch;
+  font-size: 14px;
+  line-height: 1.4em;
+  
 }
 ul > li::before {
-  content: '* ';
+  content: '^ ';
   font-weight: bold;
+  font-size: 14px;
+  /* line-height: 1.2em; */
 }
 
 /* Images */
