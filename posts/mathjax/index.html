@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>[Forward] Render LaTeX math expressions in Hugo with MathJax 3 - Box Zhang</title><meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:description" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="description" content="" />
+	<meta name="description" content="" />
+
+	<meta property="og:title" content="[Forward] Render LaTeX math expressions in Hugo with MathJax 3 | Box Zhang" />
+	<meta name="twitter:title" content="[Forward] Render LaTeX math expressions in Hugo with MathJax 3 | Box Zhang" />
+
+	<meta property="og:image" content=""/>
+	<meta itemprop="name" content="[Forward] Render LaTeX math expressions in Hugo with MathJax 3 | Box Zhang" />
+	<meta name="application-name" content="[Forward] Render LaTeX math expressions in Hugo with MathJax 3 | Box Zhang" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:title" content="[Forward] Render LaTeX math expressions in Hugo with MathJax 3" />
+<meta property="og:description" content="Original
+Adapted for MathJax 3 The code below is a modification of Doswa’s code which loads MathJax 3 instead of 2.x.
+ Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window.addEventListener(&#39;load&#39;, (event) =&gt; { document.querySelectorAll(&#34;mjx-container&#34;).forEach(function(x){ x.parentElement.classList &#43;= &#39;has-jax&#39;}) }); &lt;/script&gt; &lt;script src=&#34;https://polyfill." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://boxz.dev/posts/mathjax/" />
+<meta property="article:published_time" content="2021-02-20T02:28:55+08:00" />
+<meta property="article:modified_time" content="2021-02-20T02:28:55+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[Forward] Render LaTeX math expressions in Hugo with MathJax 3"/>
+<meta name="twitter:description" content="Original
+Adapted for MathJax 3 The code below is a modification of Doswa’s code which loads MathJax 3 instead of 2.x.
+ Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &lt;script&gt; MathJax = { tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]], displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] } }; window.addEventListener(&#39;load&#39;, (event) =&gt; { document.querySelectorAll(&#34;mjx-container&#34;).forEach(function(x){ x.parentElement.classList &#43;= &#39;has-jax&#39;}) }); &lt;/script&gt; &lt;script src=&#34;https://polyfill."/>
+<script src="https://boxz.dev/js/feather.min.js"></script>
+	
+	<link href="https://boxz.dev/css/fonts.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://boxz.dev/css/main.css" />
+	
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$','$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+});
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://boxz.dev/">Box Zhang</a>
+	</div>
+	<nav>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">[Forward] Render LaTeX math expressions in Hugo with MathJax 3</h1>
+		</div>
+		
+
+		<section class="body">
+			<p><a href="https://geoffruddock.com/math-typesetting-in-hugo/">Original</a></p>
+<h3 id="adapted-for-mathjax-3">Adapted for MathJax 3</h3>
+<p>The code below is a modification of Doswa’s code which loads MathJax 3 instead of 2.x.</p>
+<ol>
+<li>Create a file in your theme directory <code>layouts/partials/mathjax_support.html</code> as the following:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;
+    <span style="color:#a6e22e">MathJax</span> <span style="color:#f92672">=</span> {
+        <span style="color:#a6e22e">tex</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">inlineMath</span><span style="color:#f92672">:</span> [[<span style="color:#e6db74">&#39;$&#39;</span>, <span style="color:#e6db74">&#39;$&#39;</span>], [<span style="color:#e6db74">&#39;\\(&#39;</span>, <span style="color:#e6db74">&#39;\\)&#39;</span>]],
+            <span style="color:#a6e22e">displayMath</span><span style="color:#f92672">:</span> [[<span style="color:#e6db74">&#39;$$&#39;</span>,<span style="color:#e6db74">&#39;$$&#39;</span>], [<span style="color:#e6db74">&#39;\\[&#39;</span>, <span style="color:#e6db74">&#39;\\]&#39;</span>]],
+            <span style="color:#a6e22e">processEscapes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+            <span style="color:#a6e22e">processEnvironments</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+        },
+        <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">skipHtmlTags</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;script&#39;</span>, <span style="color:#e6db74">&#39;noscript&#39;</span>, <span style="color:#e6db74">&#39;style&#39;</span>, <span style="color:#e6db74">&#39;textarea&#39;</span>, <span style="color:#e6db74">&#39;pre&#39;</span>]
+        }
+    };
+
+window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;load&#39;</span>, (<span style="color:#a6e22e">event</span>) =&gt; {
+    document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;mjx-container&#34;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">x</span>){
+        <span style="color:#a6e22e">x</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">classList</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;has-jax&#39;</span>})
+});
+
+&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MathJax-script&#34;</span> <span style="color:#a6e22e">async</span>
+    <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div></li>
+<li>Next, open the file <code>layouts/partials/header.html</code> and add the following line just before the closing <code>&lt;/head&gt;</code> tag:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{{ partial &#34;mathjax_support.html&#34; . }}
+</code></pre></div></li>
+<li>Finally, add the following lines to your CSS file. You may need to tinker with the contents here depending on your theme, these are just the settings which worked for me.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">code</span>.<span style="color:#a6e22e">has-jax</span> {
+     <span style="color:#66d9ef">-webkit-</span>font-smoothing: antialiased;
+     <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">inherit</span> <span style="color:#75715e">!important</span>;
+     <span style="color:#66d9ef">border</span>: <span style="color:#66d9ef">none</span> <span style="color:#75715e">!important</span>;
+     <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+ }
+</code></pre></div></li>
+</ol>
+
+		</section>
+
+		<div class="meta">Posted on Feb 20, 2021</div>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/boxmars" title="GitHub"><i data-feather="github"></i></a>|⚡️
+	2022  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-207007854-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<script>
+      feather.replace()
+</script></div>
+    </body>
+</html>

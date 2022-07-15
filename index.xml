@@ -6,14 +6,13 @@
     <description>Recent content on Box Zhang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Box ZHANG</copyright>
     <lastBuildDate>Sun, 12 Sep 2021 23:04:56 +0800</lastBuildDate><atom:link href="https://boxz.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Naive Bayes</title>
-      <link>https://boxz.dev/posts/articles/naivebayes/</link>
+      <link>https://boxz.dev/posts/naivebayes/</link>
       <pubDate>Sun, 12 Sep 2021 23:04:56 +0800</pubDate>
       
-      <guid>https://boxz.dev/posts/articles/naivebayes/</guid>
+      <guid>https://boxz.dev/posts/naivebayes/</guid>
       <description>Conditional Probability and Bayesian rule Since $$P(A|B)=\frac{P(A\cap B)}{P(B)}$$ We can get $$P(A \cap B)=P(A|B)P(B)$$ and $$P(A \cap B)=P(B|A)P(A)$$ If we have $n$ events $B_i$ which is indenpendent, i.e. $$\forall B_i, \forall B_j, B_i\cap B_j=\emptyset$$ and $$\cup_{i=1}^n B_i=S$$ Then $$P(A \cap B_1)=P(A|B_1)P(B_1)$$ $$P(A \cap B_2)=P(A|B_2)P(B_2)$$ $$P(A \cap B_3)=P(A|B_3)P(B_3)$$ $$&amp;hellip;$$ $$P(A \cap B_n)=P(A|B_n)P(B_n)$$ $$\sum_{i=1}^n P(A\cap B_i)=\sum_{i=1}^nP(A|B_i)P(B_i)$$ We get the formula $$P(A)=\sum_{i=1}^nP(A|B_i)P(B_i)$$
 Bayesian reasoning $$P(H|E)=\frac{P(E|H)P(H)}{P(E|H)P(H)+P(E|\neg H)P(\neg H)}$$ where
  $P(H)$ is the prior probability oh the hypothesis $H$ being true $P(E|H)$ is the probability that hypothesis $H$ being yrue will result in evidence $E$ $P(\neg H)$ is the prior probability of hypothesis $H$ being false $P(E|\neg H)$ is the probability of finding evidence $E$ even when hypothesis $H$ is false   </description>
@@ -21,10 +20,10 @@ Bayesian reasoning $$P(H|E)=\frac{P(E|H)P(H)}{P(E|H)P(H)+P(E|\neg H)P(\neg H)}$$
     
     <item>
       <title>Convert Epsilon-NFA to NFA</title>
-      <link>https://boxz.dev/posts/articles/convert_epsilonnfa_to_nfa/</link>
+      <link>https://boxz.dev/posts/convert_epsilonnfa_to_nfa/</link>
       <pubDate>Thu, 02 Sep 2021 22:48:40 +0800</pubDate>
       
-      <guid>https://boxz.dev/posts/articles/convert_epsilonnfa_to_nfa/</guid>
+      <guid>https://boxz.dev/posts/convert_epsilonnfa_to_nfa/</guid>
       <description>$\epsilon$-NFA There exist $\epsilon$-transitions that allow state changes without using any input symbol.
 $\epsilon$-Closures In an $\epsilon$-NFA, the $\epsilon CLOSE(q)$ of a state $q$ is the set of states (including $q$ ) that can be reached from q by following a path whose edges are all labeled by $\epsilon$.
 $\epsilon$-NFA $\Rightarrow$ NFA Given any $\epsilon$-NFA $M=(Q,\Sigma,\delta,q_0,F)$ recognizing a language $L$ over $\Sigma$, we can construce its NFA $N=(Q,\Sigma,\delta&#39;,q_0,F&#39;)$ that also recognizes $L$:</description>
@@ -32,19 +31,19 @@ $\epsilon$-NFA $\Rightarrow$ NFA Given any $\epsilon$-NFA $M=(Q,\Sigma,\delta,q_
     
     <item>
       <title>Binary Number</title>
-      <link>https://boxz.dev/posts/articles/binary_number/</link>
+      <link>https://boxz.dev/posts/binary_number/</link>
       <pubDate>Thu, 02 Sep 2021 18:09:37 +0800</pubDate>
       
-      <guid>https://boxz.dev/posts/articles/binary_number/</guid>
+      <guid>https://boxz.dev/posts/binary_number/</guid>
       <description>Binary Terms  A binary digit is called a bit (BInary digiT) A group of four bits is called a nibble A group of eight bits (or two nibbles) is called a byte The Most significant bit (MSB) is the left-most bit The least significant bit (LSB) is the right-most bit  Representing Signed Binary Numbers Binary numbers which can only represent 0 or positive numbers are known as unsigned numbers</description>
     </item>
     
     <item>
       <title>Perfect Squares</title>
-      <link>https://boxz.dev/posts/articles/perfectsquares/</link>
+      <link>https://boxz.dev/posts/perfectsquares/</link>
       <pubDate>Tue, 11 May 2021 20:40:27 +0800</pubDate>
       
-      <guid>https://boxz.dev/posts/articles/perfectsquares/</guid>
+      <guid>https://boxz.dev/posts/perfectsquares/</guid>
       <description>Problem Given an integer $n$, return the least number of perfect square numbers that sum to $n$.
 A perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, 1, 4, 9, and 16 are perfect squares while 3 and 11 are not.
 Solution BFS Bad! import java.util.LinkedList; import java.util.Queue; public class PerfectSquares { public static void main (String[] args) { System.</description>
@@ -52,10 +51,10 @@ Solution BFS Bad! import java.util.LinkedList; import java.util.Queue; public cl
     
     <item>
       <title>[Forward] Render LaTeX math expressions in Hugo with MathJax 3</title>
-      <link>https://boxz.dev/posts/articles/mathjax/</link>
+      <link>https://boxz.dev/posts/mathjax/</link>
       <pubDate>Sat, 20 Feb 2021 02:28:55 +0800</pubDate>
       
-      <guid>https://boxz.dev/posts/articles/mathjax/</guid>
+      <guid>https://boxz.dev/posts/mathjax/</guid>
       <description>Original
 Adapted for MathJax 3 The code below is a modification of Doswa’s code which loads MathJax 3 instead of 2.x.
  Create a file in your theme directory layouts/partials/mathjax_support.html as the following: &amp;lt;script&amp;gt; MathJax = { tex: { inlineMath: [[&amp;#39;$&amp;#39;, &amp;#39;$&amp;#39;], [&amp;#39;\\(&amp;#39;, &amp;#39;\\)&amp;#39;]], displayMath: [[&amp;#39;$$&amp;#39;,&amp;#39;$$&amp;#39;], [&amp;#39;\\[&amp;#39;, &amp;#39;\\]&amp;#39;]], processEscapes: true, processEnvironments: true }, options: { skipHtmlTags: [&amp;#39;script&amp;#39;, &amp;#39;noscript&amp;#39;, &amp;#39;style&amp;#39;, &amp;#39;textarea&amp;#39;, &amp;#39;pre&amp;#39;] } }; window.addEventListener(&amp;#39;load&amp;#39;, (event) =&amp;gt; { document.querySelectorAll(&amp;#34;mjx-container&amp;#34;).forEach(function(x){ x.parentElement.classList += &amp;#39;has-jax&amp;#39;}) }); &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://polyfill.</description>
@@ -63,10 +62,10 @@ Adapted for MathJax 3 The code below is a modification of Doswa’s code which l
     
     <item>
       <title>Bitcoin: A Peer-to-Peer Electronic Cash System</title>
-      <link>https://boxz.dev/posts/articles/bitcoin/</link>
+      <link>https://boxz.dev/posts/bitcoin/</link>
       <pubDate>Wed, 17 Feb 2021 15:59:55 +0800</pubDate>
       
-      <guid>https://boxz.dev/posts/articles/bitcoin/</guid>
+      <guid>https://boxz.dev/posts/bitcoin/</guid>
       <description>比特币: 一种端对端的电子货币系统 Author: Satoshi Nakamoto Translator: Box Abstract 一个完全端对端 (purely peer-to-peer) 的电子货币使得由一方发给另一方的在线交易无需经过金融机构。 尽管解决方案中需要数字签名 (digital signature)的支持， 但是如果交易仍然需要第三方的存在来防范双重支付 (double-spending) 的发生的话， 我们将失去数字签名所带来的各项便利。 我们因此提出一种使用端对端网络 (peer-to-peer network) 来解决双重支付问题的方案。 交易网络会通过将交易哈希进一个持续增长的基于哈希工作量证明 (hash-based proof-of-work) 链来打上时间戳， 生成一个无法更改的记录， 除非重做了工作量证明。 最长的连不仅作为一系列交易发生的证明， 还证明了它本身由最大的CPU 算力池 (pool of CPU power) 计算产生。 只要主要的CPU算力在那些不会参与网络攻击的节点控制之下， 它们就会成为生成最长的链并战胜攻击者。 整个网络本身只需要极简的架构。 网络会尽全力广播消息， 节点可以随意的加入或是离开网络， 在再次加入的时候接受最长的工作量证明链来作为他们离开时发生的一切的证据。
 1. Introduction 互联网上发生的商业几乎全部依赖金融机构作为被信任的第三方来处理电子交易。 尽管对于大多数和交易来说， 整个系统运作地足够优秀， 但是它在信任模型 (trust based model) 仍然存在一些固有的缺点。 由于金融机构不可避免地需要调解纠纷， 所以完全不可逆地交易时不可能的。 调解纠纷所需要的成本增加了交易的成本， 限制了最小交易金额， 消除了小额临时交易地可能性。 由于不支持不可逆地地交易的发生， 因此对于不可撤销服务进行支付需要更大的成本。 由于交易可逆， 因此信任的需求更加广泛。 商家必须更加警惕他们的客户， 向他们所需一些他们本来不需要的信息。 一定比例的欺诈被认为是不可避免的。 如果人们选择使用物理货币进行交易，那么可以避免这些成本和交易的不确定性， 但是不存在不需要信任的第三方而能在通讯管道进行交易的商家。
 我们所需要的是一种基于密码学证明而不是信任的电子货币交易系统， 它允许任意的两方直接交易而不需要一个信任的第三方。 计算上不可逆的交易将会保护销售者不会受到诈骗。 用来保护购买者的程序化合约机制 (routine escrow mechanisms) 也容易实现。 在本篇文章中我们提出了解决双重支付的方案， 它使用端对端分布式时间戳服务来生成基于交易时间顺序的计算证明。 只要诚信的节点控制下的CPU算力超过那些合作攻击的节点的CPU算力， 整个网络就是安全的。</description>
@@ -74,11 +73,11 @@ Adapted for MathJax 3 The code below is a modification of Doswa’s code which l
     
     <item>
       <title>About Me</title>
-      <link>https://boxz.dev/posts/about/</link>
+      <link>https://boxz.dev/index/about/</link>
       <pubDate>Thu, 14 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://boxz.dev/posts/about/</guid>
-      <description>-- Education Study Computer Science in University of Macau. Graduation in 2023
+      <guid>https://boxz.dev/index/about/</guid>
+      <description>--Education Study Computer Science in University of Macau. Graduation in 2023
 Looking for CS-related research opportunity. Email
 Work Experience I am a Research Assistant at Educational Research Centre, FED in University of Macau since March 2022, focus on:
  Big Data Analysis Internet Public Opinion Analysis,  and a Machine Learning Engineer Intern at Fitlab.ai in Shenzhen since September 2021, focus on:

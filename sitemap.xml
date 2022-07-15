@@ -8,7 +8,7 @@
   </url>
   
   <url>
-    <loc>https://boxz.dev/posts/articles/naivebayes/</loc>
+    <loc>https://boxz.dev/posts/naivebayes/</loc>
     <lastmod>2021-09-12T23:04:56+08:00</lastmod>
   </url>
   
@@ -18,32 +18,37 @@
   </url>
   
   <url>
-    <loc>https://boxz.dev/posts/articles/convert_epsilonnfa_to_nfa/</loc>
+    <loc>https://boxz.dev/posts/convert_epsilonnfa_to_nfa/</loc>
     <lastmod>2021-09-02T22:48:40+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boxz.dev/posts/articles/binary_number/</loc>
+    <loc>https://boxz.dev/posts/binary_number/</loc>
     <lastmod>2021-09-02T18:09:37+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boxz.dev/posts/articles/perfectsquares/</loc>
+    <loc>https://boxz.dev/posts/perfectsquares/</loc>
     <lastmod>2021-05-11T20:40:27+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boxz.dev/posts/articles/mathjax/</loc>
+    <loc>https://boxz.dev/posts/mathjax/</loc>
     <lastmod>2021-02-20T02:28:55+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boxz.dev/posts/articles/bitcoin/</loc>
+    <loc>https://boxz.dev/posts/bitcoin/</loc>
     <lastmod>2021-02-17T15:59:55+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boxz.dev/posts/about/</loc>
+    <loc>https://boxz.dev/index/about/</loc>
+    <lastmod>2021-01-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://boxz.dev/index/</loc>
     <lastmod>2021-01-14T00:00:00+00:00</lastmod>
   </url>
   

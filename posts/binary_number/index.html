@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Binary Number - Box Zhang</title><meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:description" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="description" content="" />
+	<meta name="description" content="" />
+
+	<meta property="og:title" content="Binary Number | Box Zhang" />
+	<meta name="twitter:title" content="Binary Number | Box Zhang" />
+
+	<meta property="og:image" content=""/>
+	<meta itemprop="name" content="Binary Number | Box Zhang" />
+	<meta name="application-name" content="Binary Number | Box Zhang" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:title" content="Binary Number" />
+<meta property="og:description" content="Binary Terms  A binary digit is called a bit (BInary digiT) A group of four bits is called a nibble A group of eight bits (or two nibbles) is called a byte The Most significant bit (MSB) is the left-most bit The least significant bit (LSB) is the right-most bit  Representing Signed Binary Numbers Binary numbers which can only represent 0 or positive numbers are known as unsigned numbers" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://boxz.dev/posts/binary_number/" />
+<meta property="article:published_time" content="2021-09-02T18:09:37+08:00" />
+<meta property="article:modified_time" content="2021-09-02T18:09:37+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Binary Number"/>
+<meta name="twitter:description" content="Binary Terms  A binary digit is called a bit (BInary digiT) A group of four bits is called a nibble A group of eight bits (or two nibbles) is called a byte The Most significant bit (MSB) is the left-most bit The least significant bit (LSB) is the right-most bit  Representing Signed Binary Numbers Binary numbers which can only represent 0 or positive numbers are known as unsigned numbers"/>
+<script src="https://boxz.dev/js/feather.min.js"></script>
+	
+	<link href="https://boxz.dev/css/fonts.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://boxz.dev/css/main.css" />
+	
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$','$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+window.addEventListener('load', (event) => {
+    document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+});
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://boxz.dev/">Box Zhang</a>
+	</div>
+	<nav>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Binary Number</h1>
+		</div>
+		
+
+		<section class="body">
+			<h2 id="binary-terms">Binary Terms</h2>
+<ul>
+<li>A binary digit is called a bit (BInary digiT)</li>
+<li>A group of four bits is called a nibble</li>
+<li>A group of eight bits (or two nibbles) is called a byte</li>
+<li>The Most significant bit (MSB) is the left-most bit</li>
+<li>The least significant bit (LSB) is the right-most bit</li>
+</ul>
+<h2 id="representing-signed-binary-numbers">Representing Signed Binary Numbers</h2>
+<p>Binary numbers which can only represent 0 or positive numbers are known as <strong>unsigned numbers</strong></p>
+<p>Binary numbers which can represent positive, 0, and negative numbers are known as <strong>signed numbers</strong></p>
+<h3 id="sign-and-magnitude">Sign and Magnitude</h3>
+<p>MSB is used as a sign bit ( $0$ for positive and $1$ for negative)</p>
+<p>For example (for 8-bit sign and magnitude signed numbers):</p>
+<ul>
+<li>The negative of $00010010$ is $10010010$ (in decimal is $-18$)</li>
+<li>The negative of $11001111$ is $01001111$ (in decimal is $+79$)</li>
+<li>The decimal value of $10000011$ is $-3$ (hint: ignore the sign-bit and do the conversion first)</li>
+</ul>
+<h3 id="ones-complement">One&rsquo;s Complement</h3>
+<p>The negative of a given binary number is formed by taking the complement of each bit in the number.</p>
+<p>MSB still indicates the sign of the number</p>
+<ul>
+<li>The negative of $00010001$ is $11101110$) (decimal value $-17$)</li>
+<li>The negative of $11111110$ is $00000001$) (decimal value $1$)</li>
+<li>The decimal value of $11110101$ is $-10$ (hint: find the corresponding positive value and do the conversion)</li>
+</ul>
+<h3 id="twos-complement">Two&rsquo;s Complement</h3>
+<p>The negative of a given binary number is formed by taking the complement of each bit in the number, then add 1 to the result.</p>
+<p>MSB still indicates the sign of the number</p>
+
+		</section>
+
+		<div class="meta">Posted on Sep 2, 2021</div>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/boxmars" title="GitHub"><i data-feather="github"></i></a>|⚡️
+	2022  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-207007854-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<script>
+      feather.replace()
+</script></div>
+    </body>
+</html>
