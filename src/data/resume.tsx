@@ -23,7 +23,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
     email: "me@boxz.dev",
@@ -31,16 +31,22 @@ export const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/BoxMars",
         icon: Icons.github,
 
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/huakang-z-314592203/",
         icon: Icons.linkedin,
 
+        navbar: true,
+      },
+      Steam:{
+        name: "Steam",
+        url: "https://steamcommunity.com/id/booxmaars/",
+        icon: Icons.steam,
         navbar: true,
       },
       email: {
