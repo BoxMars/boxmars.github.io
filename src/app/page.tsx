@@ -9,7 +9,7 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
-const BLUR_FADE_DELAY = 0.04;
+const BLUR_FADE_DELAY = 0.05;
 
 export default function Page() {
   return (
@@ -20,12 +20,12 @@ export default function Page() {
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                className="text-3xl font-bold tracking-tighter sm:text-3xl xl:text-3xl/none"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
               <BlurFadeText
-                className="max-w-[600px] md:text-xl"
+                className="max-w-[600px]"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -44,7 +44,7 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans dark:prose-invert">
             {DATA.summary}
           </Markdown>
         </BlurFade>
@@ -69,6 +69,7 @@ export default function Page() {
                 badges={work.badges}
                 period={`${work.start} - ${work.end ?? "Present"}`}
                 description={work.description}
+                location={work.location}
               />
             </BlurFade>
           ))}
@@ -105,28 +106,18 @@ export default function Page() {
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
               <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+                <Badge className="text-xs" key={skill}>{skill}</Badge>
               </BlurFade>
             ))}
           </div>
         </div>
       </section>
       <section id="projects">
-        <div className="space-y-12 w-full py-12">
+        <div className="space-y-12 w-full">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
-                </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
-                  favorites.
-                </p>
+            <div className="space-y-2">
+              <div className="text-xl font-bold">
+                Projects
               </div>
             </div>
           </BlurFade>
@@ -152,7 +143,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="hackathons">
+      {/* <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -194,8 +185,8 @@ export default function Page() {
             </ul>
           </BlurFade>
         </div>
-      </section>
-      <section id="contact">
+      </section> */}
+      {/* <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-3">
@@ -219,7 +210,7 @@ export default function Page() {
             </div>
           </BlurFade>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
