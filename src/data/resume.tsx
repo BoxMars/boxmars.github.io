@@ -118,14 +118,14 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/umeh.png",
+      image: "/umeh.jpg",
       video:
         "",
     },
     {
       title: "UM ARK",
       href: "https://umall.one",
-      dates: "Aug 2022 - Present",
+      dates: "Aug. 2022 - Present",
       active: true,
       description:
         "We integrated commonly used features for university life into an *ALL in One* solution. The cross-platform app, developed using React Native, is now available on the App Store and Google Play.",
