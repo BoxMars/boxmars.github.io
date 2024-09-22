@@ -24,11 +24,11 @@ export default function Page() {
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
-              <BlurFadeText
-                className="max-w-[600px] text-sm sm:text-base text-pretty"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
-              />
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <Markdown className="max-w-[600px] text-sm sm:text-base text-pretty">
+                  {DATA.description}
+                </Markdown>
+              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
               <Avatar className="size-28 border">
@@ -48,6 +48,58 @@ export default function Page() {
             {DATA.summary}
           </Markdown>
         </BlurFade>
+      </section>
+
+      <section id="education">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+            <h2 className="text-xl font-bold">Education</h2>
+          </BlurFade>
+          {DATA.education.map((education, id) => (
+            <BlurFade
+              key={education.school}
+              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+            >
+              <ResumeCard
+                key={education.school}
+                href={education.href}
+                logoUrl={education.logoUrl}
+                altText={education.school}
+                title={education.school}
+                subtitle={education.degree}
+                period={`${education.start} - ${education.end}`}
+              />
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+      
+      <section id="experience">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">Research Experience</h2>
+          </BlurFade>
+          {DATA.research_experience.map((work, id) => (
+            <BlurFade
+              key={work.company}
+              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+            >
+              <ResumeCard
+                key={work.company}
+                logoUrl={work.logoUrl}
+                altText={work.company}
+                title={work.company}
+                subtitle={work.title}
+                href={work.href}
+                badges={work.badges}
+                period={`${work.start} - ${work.end ?? "Present"}`}
+                description={work.description}
+                location={work.location}
+                lab={work.lab}
+              />
+            </BlurFade>
+          ))}
+        </div>
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
@@ -75,29 +127,7 @@ export default function Page() {
           ))}
         </div>
       </section>
-      <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
-          </BlurFade>
-          {DATA.education.map((education, id) => (
-            <BlurFade
-              key={education.school}
-              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
-            >
-              <ResumeCard
-                key={education.school}
-                href={education.href}
-                logoUrl={education.logoUrl}
-                altText={education.school}
-                title={education.school}
-                subtitle={education.degree}
-                period={`${education.start} - ${education.end}`}
-              />
-            </BlurFade>
-          ))}
-        </div>
-      </section>
+
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>

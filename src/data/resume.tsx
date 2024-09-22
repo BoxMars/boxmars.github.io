@@ -8,18 +8,14 @@ export const DATA = {
   location: "Taipa, Macau SAR., China",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Software Developer, Computer Science Student. I love building products that make a difference. I'm passionate about open source, machine learning, and edge computing.",
+    "Computer Science Student. I am looking for a **PhD position** in Computer Science, focusing on **Edge Computeing**, **Large Language Model**.",
   summary:
     "I am currently a master's student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
   avatarUrl: "/me.jpg",
   skills: [
     "Python",
-    "React",
-    "Next.js",
-    "Typescript",
-    // "Node.js",
-    // "Docker",
-    "Java",
+    "Machine Learning",
+    "Web Development - Full Stack",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -43,17 +39,10 @@ export const DATA = {
 
         navbar: true,
       },
-      Steam:{
-        name: "Steam",
-        url: "https://steamcommunity.com/id/booxmaars/",
-        icon: Icons.steam,
-        navbar: true,
-      },
       email: {
         name: "Send Email",
         url: "mailto://me@boxz.dev",
         icon: Icons.email,
-
         navbar: true,
       },
     },
@@ -63,14 +52,14 @@ export const DATA = {
     {
       company: "Fitlab",
       href: "#",
-      badges: [],
+      badges: ['Internship'],
       location: "Shenzhen, China",
-      title: "Algorithm Engineer (Internship)",
+      title: "Machine Leagring Engineer",
       logoUrl: "",
       start: "Sep. 2021",
       end: "Dec. 2022",
       description:
-        "Worked on Human Pose Estimation, Video Codec optimization, and Video Frame Synchronization.",
+        "1. **Human Pose Estimation**: Forcusing on the 3D reconstruction from multiple views in gym, \n 2. **Video Codec**: Optimize the decoding process of video streaming from webcam, and \n 3. **Video Frame Synchronization**: Synchronize video frames from multiple webcams.",
     },
   ],
   education: [
@@ -89,6 +78,61 @@ export const DATA = {
       logoUrl: "/um.png",
       start: "2019",
       end: "2023",
+    },
+  ],
+
+  research_experience: [
+    {
+      company: "Univeristy of Macau",
+      lab: "State Key Laboratory of IoTSC",
+      href: "https://um.edu.mo",
+      badges: [],
+      location: "Macau S.A.R., China",
+      title: "Research Assistant",
+      logoUrl: "/um.png",
+      start: "Aug. 2023",
+      end: "Present",
+      description:
+        "Focus on **Edge Computing** and **Large Language Model**.", 
+    },
+    {
+      company: "Univeristy of Macau",
+      lab: "State Key Laboratory of IoTSC",
+      href: "https://um.edu.mo",
+      badges: ['Summer Research Program'],
+      location: "Macau S.A.R., China",
+      title: "Research Assistant",
+      logoUrl: "/um.png",
+      start: "Jul. 2022",
+      end: "Aug. 2022",
+      description:
+        "Design a yoga teaching and grading system using **pose estimation** implemented on **edge devices**.", 
+    },
+    // {
+    //   company: "Univeristy of Macau",
+    //   lab: "Educational Research Centre, FED",
+    //   href: "https://um.edu.mo",
+    //   badges: [],
+    //   location: "Macau S.A.R., China",
+    //   title: "Research Assistant",
+    //   logoUrl: "/um.png",
+    //   start: "Apr. 2022",
+    //   end: "Jul. 2022",
+    //   description:
+    //     "Focus on **Data Processing** of Weibo COVID-19 posts data, and perform LDA analysis on the data. ", 
+    // },
+    {
+      company: "Univeristy of Macau",
+      lab: "State Key Laboratory of IoTSC",
+      href: "https://um.edu.mo",
+      badges: ['Summer Research Program'],
+      location: "Macau S.A.R., China",
+      title: "Research Assistant",
+      logoUrl: "/um.png",
+      start: "Jul. 2021",
+      end: "Aug. 2021",
+      description:
+        "Focus on **GPU Allocation** of multiple AI Task* in *Edge Device*. ", 
     },
   ],
   projects: [

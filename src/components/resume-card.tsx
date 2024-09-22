@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import Markdown from "react-markdown";
 
 interface ResumeCardProps {
   logoUrl: string;
@@ -19,6 +20,7 @@ interface ResumeCardProps {
   period: string;
   description?: string;
   location?:string;
+  lab?:string;
 }
 export const ResumeCard = ({
   logoUrl,
@@ -30,6 +32,7 @@ export const ResumeCard = ({
   period,
   description,
   location,
+  lab,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
@@ -63,11 +66,11 @@ export const ResumeCard = ({
               <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
                 {title}
                 {badges && (
-                  <span className="inline-flex gap-x-1">
+                  <span className="inline-flex gap-x-1 px-1">
                     {badges.map((badge, index) => (
                       <Badge
-                        variant="secondary"
-                        className="align-middle text-xs"
+                        variant="outline"
+                        className="align-middle text-xs py-0"
                         key={index}
                       >
                         {badge}
@@ -86,12 +89,21 @@ export const ResumeCard = ({
                 {period}
               </div>
             </div>
+            {
+              lab &&
+              <div className="flex items-center justify-between gap-x-2 text-base">
+                <div className="font-sans text-xs">{lab}</div>
+                <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+                {location && <div className="font-sans text-xs">{location}</div>}
+              </div>
+            </div>
+            }
             <div className="flex items-center justify-between gap-x-2 text-base">
               <div>
                 {subtitle && <div className="font-sans text-xs">{subtitle}</div>}
               </div>
               <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
-                {location && <div className="font-sans text-xs">{location}</div>}
+                {location && (lab==="" || lab===undefined) &&<div className="font-sans text-xs">{location}</div>}
               </div>
             </div>
             
@@ -108,9 +120,11 @@ export const ResumeCard = ({
                 duration: 0.7,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="mt-2 text-xs sm:text-sm"
+              className="mt-2 text-xs"
             >
+              <Markdown className="text-sx">
               {description}
+              </Markdown>
             </motion.div>
           )}
         </div>
