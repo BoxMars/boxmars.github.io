@@ -13,12 +13,12 @@ export const DATA = {
     "I am currently a master's student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
   avatarUrl: "/me.jpg",
   skills: [
+    "Python",
     "React",
     "Next.js",
     "Typescript",
-    "Node.js",
-    "Python",
-    "Docker",
+    // "Node.js",
+    // "Docker",
     "Java",
   ],
   navbar: [
