@@ -132,7 +132,7 @@ export const DATA = {
       start: "Jul. 2021",
       end: "Aug. 2021",
       description:
-        "Focus on **GPU Allocation** of multiple AI Task* in *Edge Device*. ", 
+        "Focus on **GPU Allocation** of multiple *AI Task* in *Edge Device*. ", 
     },
   ],
   projects: [
