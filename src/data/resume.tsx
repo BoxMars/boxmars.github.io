@@ -8,7 +8,7 @@ export const DATA = {
   location: "Taipa, Macau SAR., China",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Computer Science Student. I am looking for a **PhD position** in Computer Science, focusing on **Edge Computeing**, **Large Language Model**.",
+    "Computer Science Student. I am looking for a **PhD position** in Computer Science, focusing on **Edge Computeing**, **Large Language Model**. [*Send Email*](mailto:me@boxz.dev)",
   summary:
     "I am currently a master's student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
   avatarUrl: "/me.jpg",
@@ -41,7 +41,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "mailto://me@boxz.dev",
+        url: "mailto:me@boxz.dev",
         icon: Icons.email,
         navbar: true,
       },
