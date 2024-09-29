@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { cn, getGradient } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -61,13 +61,16 @@ export function ProjectCard({
           />
         )}
         {image && (
-          <Image
+          <div className={cn(getGradient(),'bg-gradient-to-br pt-4 pl-4 pr-4')}>
+            <Image
             src={image}
             alt={title}
             width={500}
             height={300}
-            className="h-40 w-full overflow-hidden object-cover object-top"
+            className={cn("h-40 w-full overflow-hidden object-cover object-top rounded-t-xl",)}
           />
+          </div>
+
         )}
       </Link>
       <CardHeader className="px-2">

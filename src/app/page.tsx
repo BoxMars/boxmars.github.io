@@ -20,17 +20,22 @@ export default function Page() {
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-3xl xl:text-3xl/none"
+                className="text-3xl font-bold tracking-tighter sm:text-3xl xl:text-3xl/none print:hidden"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
+              <BlurFadeText
+                delay={BLUR_FADE_DELAY * 2}
+                className="text-2xl font-bold tracking-tighter sm:text-2xl xl:text-2xl/none print:block"
+                yOffset={8}
+                text={'Zhang Huakang'}/>
               <BlurFade delay={BLUR_FADE_DELAY}>
-                <Markdown className="max-w-[600px] text-sm sm:text-base text-pretty">
+                <Markdown className="max-w-[600px] text-sm sm:text-base text-pretty print:hidden">
                   {DATA.description}
                 </Markdown>
               </BlurFade>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY}>
+            <BlurFade delay={BLUR_FADE_DELAY} className="print:hidden">
               <Avatar className="size-28 border">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
@@ -142,7 +147,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="projects">
+      <section id="projects" className="print:hidden">
         <div className="space-y-12 w-full">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="space-y-2">
