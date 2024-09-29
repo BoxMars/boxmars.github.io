@@ -1,6 +1,6 @@
 ---
-publishedAt: "2023-10-24"
 title: "Paper Reading: Looking beyond GPUs for DNN Scheduling on Multi-Tenant Clusters"
+publishedAt: "2023-10-24"
 summary: "Training Deep Neural Networks (DNNs) is a popular workload in both enterprises and cloud data centers. Existing schedulers for DNN training consider GPU as the dominant resource and allocate other resources such as CPU and memory proportional to the number of GPUs requested by the job. Unfortunately, these schedulers do not consider the impact of a job’s sensitivity to allocation of CPU and memory resources. In this work, we propose Synergy, a resourcesensitive scheduler for shared GPU clusters. Synergy infers the sensitivity of DNNs to different resources using optimistic profiling; some jobs might benefit from more than the GPUproportional allocation and some jobs might not be affected by less than GPU-proportional allocation. Synergy performs such multi-resource workload-aware assignments across a set of jobs scheduled on shared multi-tenant clusters using a new near-optimal online algorithm. Our experiments show that workload-aware CPU and memory allocations can improve average job completion time by upto 3.4×, by better utilizing existing cluster resources, compared to traditional GPU-proportional scheduling."
 ---
 

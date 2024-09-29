@@ -1,7 +1,9 @@
 import { getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -58,6 +60,7 @@ export default async function Blog({
   if (!post) {
     notFound();
   }
+  
 
   return (
     <section id="blog">
@@ -83,6 +86,13 @@ export default async function Blog({
           }),
         }}
       />
+      <Link href="/blog" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center py-1">
+        <ChevronLeftIcon
+          size={14}
+          />
+        Back to Blog
+      </Link>
+
       <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
         {post.metadata.title}
       </h1>

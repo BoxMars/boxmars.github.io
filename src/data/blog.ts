@@ -5,6 +5,9 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import rehypeKatex from 'rehype-katex'
+import rehypeMathjax from 'rehype-mathjax'
+import remarkMath from 'remark-math'
 import { unified } from "unified";
 
 type Metadata = {
@@ -21,7 +24,15 @@ function getMDXFiles(dir: string) {
 export async function markdownToHTML(markdown: string) {
   const p = await unified()
     .use(remarkParse)
+    .use(remarkMath)
     .use(remarkRehype)
+    .use(rehypeMathjax,{
+      tex:{
+        inlineMath: [['$', '$'],['\\(', '\\)']],
+        displayMath: [['$$', '$$'],['\\[', '\\]']],
+        processEscapes: true,
+      }
+    })
     .use(rehypePrettyCode, {
       // https://rehype-pretty.pages.dev/#usage
       theme: {
