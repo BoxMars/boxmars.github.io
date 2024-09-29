@@ -1,6 +1,8 @@
 import BlurFade from "@/components/magicui/blur-fade";
-import { getBlogPosts } from "@/data/blog";
+import { getBlogPosts, markdownToHTML } from "@/data/blog";
+import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
+import Markdown from "react-markdown";
 
 export const metadata = {
   title: "Blog",
@@ -14,6 +16,14 @@ export default async function BlogPage() {
 
   return (
     <section>
+      <BlurFade delay={BLUR_FADE_DELAY}>
+        <Link href="/" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center py-1">
+          <ChevronLeftIcon
+            size={14}
+            />
+          Back to Home
+        </Link>
+      </BlurFade>
       <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="font-medium text-2xl mb-8 tracking-tighter">Blog</h1>
       </BlurFade>
@@ -38,7 +48,9 @@ export default async function BlogPage() {
               href={`/blog/${post.slug}`}
             >
               <div className="w-full flex flex-col">
-                <p className="tracking-tight">{"["+(id+1)+"] - "+post.metadata.title}</p>
+                <p className="tracking-tight">
+                  {post.metadata.title}
+                </p>
                 <p className="h-6 text-xs text-muted-foreground">
                   {post.metadata.publishedAt}
                 </p>
