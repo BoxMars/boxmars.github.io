@@ -26,7 +26,7 @@ export default function Page() {
               />
               <BlurFadeText
                 delay={BLUR_FADE_DELAY * 2}
-                className="text-2xl font-bold tracking-tighter sm:text-2xl xl:text-2xl/none print:block"
+                className="text-2xl font-bold tracking-tighter sm:text-2xl xl:text-2xl/none hidden print:block"
                 yOffset={8}
                 text={'Zhang Huakang'}/>
               <BlurFade delay={BLUR_FADE_DELAY}>
