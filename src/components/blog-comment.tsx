@@ -1,27 +1,31 @@
 'use client';
 
 import Giscus from '@giscus/react';
+import { useTheme } from 'next-themes';
+
 
 export const CommentsCofig={
-    repo:'BoxMars/boxmars.github.io',
+    owner:'BoxMars',
+	repo:'boxmars.github.io',
     repoId:'R_kgDOMtySLg',
     category:'General',
     categoryId:'DIC_kwDOMtySLs4Ci5zi',
 }
 
-export const Comments = ({ repo, repoId, category, categoryId }:any) => {
+export const Comments = () => {
+    const { theme, setTheme } = useTheme();
 	return (
 		<Giscus
-			repo={repo}
-			repoId={repoId}
-			category={category}
-			categoryId={categoryId}
+			repo={`${CommentsCofig.owner}/${CommentsCofig.repo}`}
+			repoId={CommentsCofig.repoId}
+			category={CommentsCofig.category}
+			categoryId={CommentsCofig.categoryId}
 			mapping="title"
-            strict='1'
+			strict="1"
 			reactionsEnabled="1"
 			emitMetadata="1"
 			inputPosition="top"
-			theme="noborder_dark"
+			theme={theme === 'dark' ? "noborder_dark" : 'noborder_light'}
 			lang="en"
 			loading="lazy"
 		/>
