@@ -1,3 +1,4 @@
+import { CommentsCofig, Comments } from "@/components/blog-comment";
 import { getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { cn, formatDate } from "@/lib/utils";
@@ -107,6 +108,7 @@ export default async function Blog({
         className="prose dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: post.source }}
       ></article>
+      <Comments {...CommentsCofig}/>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { Github, HomeIcon, Linkedin, NotebookIcon } from "lucide-react";
 
 export const DATA = {
   name: "Box, Huakang Zhang",
@@ -28,14 +28,13 @@ export const DATA = {
       GitHub: {
         name: "GitHub",
         url: "https://github.com/BoxMars",
-        icon: Icons.github,
-
+        icon: Github,
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/huakang-z-314592203/",
-        icon: Icons.linkedin,
+        icon: Linkedin,
 
         navbar: true,
       },
