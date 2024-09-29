@@ -2,7 +2,7 @@ import { Icons } from "@/components/icons";
 import { Github, HomeIcon, Linkedin, NotebookIcon } from "lucide-react";
 
 export const DATA = {
-  name: "Box, Huakang Zhang",
+  name: "Box",
   initials: "Box",
   url: "https://boxz.dev",
   location: "Taipa, Macau SAR., China",
