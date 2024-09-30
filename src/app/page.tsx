@@ -57,7 +57,9 @@ export default async function Page() {
                     Object.entries(DATA.contact.social)
                       .filter(([_, social]) => social.navbar)
                       .map(([name,socail])=>(
-                        <Tooltip>
+                        <Tooltip
+                        key={socail.url}
+                        >
                         <TooltipTrigger asChild>
                         <Link
                           href={socail.url}
