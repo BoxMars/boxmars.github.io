@@ -7,8 +7,9 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { use, useEffect } from "react";
 import Markdown from "react-markdown";
+import { usePrint } from "react-use-print";
 
 interface ResumeCardProps {
   logoUrl: string;
@@ -35,6 +36,7 @@ export const ResumeCard = ({
   lab,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const { isPrint, print } = usePrint();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     if (description) {
@@ -50,7 +52,7 @@ export const ResumeCard = ({
       onClick={handleClick}
     >
       <Card className="flex">
-        <div className="flex-none">
+        <div className="flex-none print:hidden">
           <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
             <AvatarImage
               src={logoUrl}
@@ -70,7 +72,7 @@ export const ResumeCard = ({
                     {badges.map((badge, index) => (
                       <Badge
                         variant="outline"
-                        className="align-middle text-xs py-0"
+                        className="align-middle text-xs py-0 print:border-none"
                         key={index}
                       >
                         {badge}
@@ -80,7 +82,7 @@ export const ResumeCard = ({
                 )}
                 <ChevronRightIcon
                   className={cn(
-                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
+                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100 print:hidden",
                     isExpanded ? "rotate-90" : "rotate-0"
                   )}
                 />
@@ -109,6 +111,7 @@ export const ResumeCard = ({
             
           </CardHeader>
           {description && (
+            <>
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{
@@ -120,12 +123,16 @@ export const ResumeCard = ({
                 duration: 0.7,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="mt-2 text-xs"
+              className="mt-2 text-xs print:hidden"
             >
-              <Markdown className="text-sx">
+              <Markdown className="text-xs ">
               {description}
               </Markdown>
             </motion.div>
+            <Markdown className="text-xs print:px-2 mt-1 hidden print:block">
+              {description}
+            </Markdown>
+            </>
           )}
         </div>
       </Card>

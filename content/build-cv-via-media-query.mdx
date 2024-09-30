@@ -1,0 +1,49 @@
+---
+title: "Build CV via Media Query"
+publishedAt: "2024-09-30"
+summary: "Creating a dynamic CV webpage using Media Queries and React Hooks."
+---
+
+## TL;DR
+
+In this post, I’ll share how I built a versatile CV webpage that adapts to different versions—work and academic—using Media Queries and React Hooks.
+
+## Background
+
+As I prepare for software development internships, I realized the need for a comprehensive CV that showcases my work and project experience. Previously, I maintained a separate academic CV, but synchronizing information between the two was tedious.
+
+To streamline my application process, I decided to set up a personal website:
+
+![My Website Screen](/cv-media-query/my-website.png)
+
+I discovered an interesting feature: by adding parameters to the URL, I could toggle between the work and academic versions of my CV. For instance:
+
+```
+https://boxz.dev/?version=work
+https://boxz.dev/?version=academic
+```
+
+This led me to the idea of printing both versions of my CV directly from the website.
+
+## Tech I Need
+
+### Printing Media Query
+
+To implement this, I referred to the [MDN documentation on Printing Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Printing). The key component is the `@media print` rule, which allows for specific styles when printing. Additionally, the `beforeprint` and `afterprint` events can be utilized for further customization.
+
+### Tailwind CSS
+
+Since I’m using Tailwind CSS for my website, it offers print modifiers that conditionally apply styles during printing. This makes it easy to hide or show elements based on the print context.
+
+## Practice
+
+For example, I wanted to hide my avatar in the printed version of my CV. I achieved this using the `print:hidden` class:
+
+```tsx
+<div className="print:hidden">
+    <Avatar className="size-28 border">
+        <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+        <AvatarFallback>{DATA.initials}</AvatarFallback>
+    </Avatar>
+</div>
+```
