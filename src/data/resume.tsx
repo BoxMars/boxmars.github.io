@@ -158,7 +158,7 @@ export const DATA = {
         {
           type: "git",
           href: "https://github.com/UMHelper/next-web",
-          icon: <Icons.github className="size-3" />,
+          icon: <Github className="size-3"/>,
         },
       ],
       image: "/umeh.jpg",
@@ -189,7 +189,7 @@ export const DATA = {
         {
           type: "git",
           href: "https://github.com/UM-ARK",
-          icon: <Icons.github className="size-3" />,
+          icon: <Github className="size-3"/>,
         },
         { 
           type: "iOS",

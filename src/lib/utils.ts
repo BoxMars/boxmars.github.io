@@ -40,7 +40,7 @@ export function formatDate(date: string) {
 export function getGradient() {
   const gradients = [
     "from-stone-300 to-amber-300",
-    "from-gray-300 to-emerald-300",
+    // "from-gray-300 to-emerald-300",
     "from-violet-300 to-blue-300",
     "from-indigo-300 to-sky-300",
     "from-rose-300 to-yellow-300",
