@@ -9,7 +9,6 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React, { use, useEffect } from "react";
 import Markdown from "react-markdown";
-import { usePrint } from "react-use-print";
 
 interface ResumeCardProps {
   logoUrl: string;
@@ -36,7 +35,6 @@ export const ResumeCard = ({
   lab,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
-  const { isPrint, print } = usePrint();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     if (description) {

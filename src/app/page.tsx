@@ -70,7 +70,7 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id='blog'>
+      <section id='blog' className="print:hidden">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <h2 className="text-xl font-bold">Recent Blog</h2>
@@ -87,7 +87,7 @@ export default async function Page() {
                 title={post.metadata.title}
                 description={post.metadata.summary}
                 href={`/blog/${post.slug}`}
-                period={post.metadata.publishedAt}
+                period={""}
               />
             </BlurFade>
           ))}
