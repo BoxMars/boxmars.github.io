@@ -7,6 +7,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { getBlogPosts } from "@/data/blog";
 import { DATA } from "@/data/resume";
+import { cn } from "@/lib/utils";
+import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
@@ -73,7 +75,14 @@ export default async function Page() {
       <section id='blog' className="print:hidden">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">Recent Blog</h2>
+            <Link href='/blog' className="inline-flex items-center justify-center group">
+              <h2 className="text-xl font-bold">Recent Blog</h2>
+              <ChevronRightIcon
+                  className={cn(
+                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100 print:hidden",
+                  )}
+                />
+            </Link>
           </BlurFade>
           {reacent_blog && reacent_blog.map((post, id) => (
             <BlurFade
@@ -88,6 +97,7 @@ export default async function Page() {
                 description={post.metadata.summary}
                 href={`/blog/${post.slug}`}
                 period={""}
+                type="blog"
               />
             </BlurFade>
           ))}

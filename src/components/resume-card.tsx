@@ -21,6 +21,7 @@ interface ResumeCardProps {
   description?: string;
   location?:string;
   lab?:string;
+  type?:string
 }
 export const ResumeCard = ({
   logoUrl,
@@ -33,11 +34,12 @@ export const ResumeCard = ({
   description,
   location,
   lab,
+  type,
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (description) {
+    if (type!='blog'&& description) {
       e.preventDefault();
       setIsExpanded(!isExpanded);
     }
