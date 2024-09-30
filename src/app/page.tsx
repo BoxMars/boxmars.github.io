@@ -5,6 +5,8 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { getBlogPosts } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -50,6 +52,30 @@ export default async function Page() {
                 <Markdown className="max-w-[600px] text-sm sm:text-base text-pretty print:hidden">
                   {DATA.description}
                 </Markdown>
+                <div className="flex items-center space-x-1 py-1 ml-[-10px]">
+                  {
+                    Object.entries(DATA.contact.social)
+                      .filter(([_, social]) => social.navbar)
+                      .map(([name,socail])=>(
+                        <Tooltip>
+                        <TooltipTrigger asChild>
+                        <Link
+                          href={socail.url}
+                          className={cn(
+                            buttonVariants({ variant: "ghost", size: "icon" }),
+                          )}
+                          key={socail.url}
+                          >
+                            <socail.icon className="size-4"/>
+                        </Link>
+                        </TooltipTrigger>
+                        <TooltipContent side="bottom">
+                          <p>{name}</p>
+                        </TooltipContent>
+                        </Tooltip>
+                      ))
+                  }
+                </div>
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="print:hidden">

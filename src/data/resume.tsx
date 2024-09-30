@@ -8,9 +8,9 @@ export const DATA = {
   location: "Taipa, Macau SAR., China",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Computer Science Student. Focusing on **Edge Computeing**, **Large Language Model**. [*Send Email*](mailto:booxmaars@gmail.com)",
+    "Computer Science Student. Focusing on **Edge Computeing**, **Large Language Model**. ",
   summary:
-    "I am currently a master's student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
+    "I am currently a Year 2 master's student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
   avatarUrl: "/me.jpg",
   skills: [
     "Python",
