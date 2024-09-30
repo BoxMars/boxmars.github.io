@@ -5,13 +5,28 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { getBlogPosts } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.05;
 
-export default function Page() {
+export default async function Page() {
+  let reacent_blog=await getBlogPosts();
+  //sort by date
+  reacent_blog=reacent_blog.sort((a, b) => {
+    if (
+      new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
+    ) {
+      return -1;
+    }
+    return 1;
+  });
+  if (reacent_blog.length>3){
+    reacent_blog=reacent_blog.slice(0,3);
+  }
+
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10 print:space-y-5 print:min-h-fit">
       <section id="hero">
@@ -53,6 +68,30 @@ export default function Page() {
             {DATA.summary}
           </Markdown>
         </BlurFade>
+      </section>
+
+      <section id='blog'>
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 3}>
+            <h2 className="text-xl font-bold">Recent Blog</h2>
+          </BlurFade>
+          {reacent_blog && reacent_blog.map((post, id) => (
+            <BlurFade
+              key={post.slug}
+              delay={BLUR_FADE_DELAY * 4 + id * 0.05}
+            >
+              <ResumeCard
+                key={post.slug}
+                logoUrl=""
+                altText={post.metadata.title}
+                title={post.metadata.title}
+                description={post.metadata.summary}
+                href={`/blog/${post.slug}`}
+                period={post.metadata.publishedAt}
+              />
+            </BlurFade>
+          ))}
+        </div>
       </section>
 
       <section id="education">
