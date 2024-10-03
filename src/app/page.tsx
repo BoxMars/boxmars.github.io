@@ -346,7 +346,7 @@ export default async function Page() {
           Copyright © 2024 Box, Zhang Huakang
           </p>
           <p>Commit <Link
-            href={revision.gitUrl+revision.has}>
+            href={revision.gitUrl+'/'+revision.hash}>
             <span className="underline">{revision.shortHash}</span>
             </Link> on {revision.committer.relativeDate} by {revision.committer.name}
           </p>
