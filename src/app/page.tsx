@@ -14,15 +14,19 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
+import { getLastCommit } from 'last-commit-log';
+
 const BLUR_FADE_DELAY = 0.05;
 
 export default async function Page() {
   let reacent_blog=await getBlogPosts();
-  const revision = require('child_process')
-  .execSync('git rev-parse HEAD')
-  .toString().trim()
 
-  // console.log(revision)
+  const LCL = require('last-commit-log');
+  const lcl = new LCL();
+
+  const revision = await lcl.getLastCommit();
+
+  console.log(revision)
 
   //sort by date
   reacent_blog=reacent_blog.sort((a, b) => {
@@ -342,9 +346,9 @@ export default async function Page() {
           Copyright © 2024 Box, Zhang Huakang
           </p>
           <p>Commit <Link
-            href={"https://github.com/BoxMars/boxmars.github.io/commit/"+revision}>
-            <span className="underline">{revision.substr(0,7)}</span>
-            </Link> on Github
+            href={revision.gitUrl+revision.has}>
+            <span className="underline">{revision.shortHash}</span>
+            </Link> on {revision.committer.relativeDate} by {revision.committer.name}
           </p>
         </div>
       </section>
