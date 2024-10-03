@@ -348,7 +348,7 @@ export default async function Page() {
           <p>Commit <Link
             href={revision.gitUrl+'/commit/'+revision.hash}>
             <span className="underline">{revision.shortHash}</span>
-            </Link> on {revision.committer.relativeDate} by {revision.committer.name}
+            </Link>
           </p>
         </div>
       </section>
