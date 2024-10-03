@@ -18,6 +18,12 @@ const BLUR_FADE_DELAY = 0.05;
 
 export default async function Page() {
   let reacent_blog=await getBlogPosts();
+  const revision = require('child_process')
+  .execSync('git rev-parse HEAD')
+  .toString().trim()
+
+  // console.log(revision)
+
   //sort by date
   reacent_blog=reacent_blog.sort((a, b) => {
     if (
@@ -81,10 +87,17 @@ export default async function Page() {
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="print:hidden">
-              <Avatar className="size-28 border">
+              <Tooltip delayDuration={1000}>
+              <TooltipTrigger asChild>
+              <Avatar className="size-32 border">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="">
+                <p>Taken in Taipei</p>
+              </TooltipContent>
+              </Tooltip>
             </BlurFade>
           </div>
         </div>
@@ -323,6 +336,18 @@ export default async function Page() {
           </BlurFade>
         </div>
       </section> */}
+      <section id='git'>
+        <div className="text-xs text-slate-600 dark:text-slate-300 print:hidden">
+          <p>
+          Copyright © 2024 Box, Zhang Huakang
+          </p>
+          <p>Commit <Link
+            href={"https://github.com/BoxMars/boxmars.github.io/commit/"+revision}>
+            <span className="underline">{revision.substr(0,7)}</span>
+            </Link> on Github
+          </p>
+        </div>
+      </section>
     </main>
   );
 }
