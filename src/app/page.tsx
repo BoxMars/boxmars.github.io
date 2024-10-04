@@ -346,7 +346,7 @@ export default async function Page() {
           Copyright © 2024 Box, Zhang Huakang
           </p>
           <p>Commit <Link
-            href={revision.gitUrl+'/commit/'+revision.hash}>
+            href={'https://github.com/BoxMars/boxmars.github.io/commit/'+revision.hash}>
             <span className="underline">{revision.shortHash}</span>
             </Link>
           </p>
