@@ -5,7 +5,7 @@ export const DATA = {
   name: "Box",
   initials: "Box",
   url: "https://boxz.dev",
-  location: "Taipa, Macau SAR., China",
+  location: "Taipa, Macau S.A.R., China",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
     "Computer Science Student. Focusing on **Edge Computeing**, **Large Language Model**. ",
@@ -64,7 +64,7 @@ export const DATA = {
   education: [
     {
       school: "University of Macau",
-      href: "https://um.edu.mo",
+      href: "#",
       degree: "Master of Science in Computer Science",
       logoUrl: "/um.png",
       start: "2023",
@@ -72,7 +72,7 @@ export const DATA = {
     },
     {
       school: "University of Macau",
-      href: "https://um.edu.mo",
+      href: "#",
       degree: "Bachelor of Science in Computer Science",
       logoUrl: "/um.png",
       start: "2019",
@@ -84,7 +84,7 @@ export const DATA = {
     {
       company: "Univeristy of Macau",
       lab: "State Key Laboratory of IoTSC",
-      href: "https://um.edu.mo",
+      href: "#",
       badges: [],
       location: "Macau S.A.R., China",
       title: "Research Assistant",
@@ -97,7 +97,7 @@ export const DATA = {
     {
       company: "Univeristy of Macau",
       lab: "State Key Laboratory of IoTSC",
-      href: "https://um.edu.mo",
+      href: "#",
       badges: ['Summer Research'],
       location: "Macau S.A.R., China",
       title: "Research Assistant",
@@ -123,7 +123,7 @@ export const DATA = {
     {
       company: "Univeristy of Macau",
       lab: "State Key Laboratory of IoTSC",
-      href: "https://um.edu.mo",
+      href: "#",
       badges: ['Summer Research'],
       location: "Macau S.A.R., China",
       title: "Research Assistant",
