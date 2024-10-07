@@ -129,7 +129,14 @@ export default async function Page() {
                 />
             </Link>
           </BlurFade>
-          {reacent_blog && reacent_blog.map((post, id) => (
+          {reacent_blog && reacent_blog.sort((a, b) => {
+          if (
+            new Date(a.metadata.lastUpdatedAt) > new Date(b.metadata.lastUpdatedAt)
+          ) {
+            return -1;
+          }
+          return 1;
+        }).map((post, id) => (
             <BlurFade
               key={post.slug}
               delay={BLUR_FADE_DELAY * 4 + id * 0.05}
@@ -141,7 +148,7 @@ export default async function Page() {
                 title={post.metadata.title}
                 description={post.metadata.summary}
                 href={`/blog/${post.slug}`}
-                period={""}
+                period={post.metadata.lastUpdatedAt}
                 type="blog"
               />
             </BlurFade>

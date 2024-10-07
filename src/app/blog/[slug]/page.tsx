@@ -20,6 +20,7 @@ export async function generateMetadata({
   let {
     title,
     publishedAt: publishedTime,
+    lastUpdatedAt: modifiedTime,
     summary: description,
     image,
   } = post.metadata;
@@ -57,7 +58,7 @@ export default async function Blog({
   };
 }) {
   let post = await getPost(params.slug);
-
+  console.log(post.metadata);
   if (!post) {
     notFound();
   }
@@ -99,7 +100,10 @@ export default async function Blog({
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <Suspense fallback={<p className="h-5" />}>
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)}
+            Updated at {formatDate(post.metadata.lastUpdatedAt)}
+          </p>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            Publisbed at {formatDate(post.metadata.publishedAt)}
           </p>
         </Suspense>
       </div>

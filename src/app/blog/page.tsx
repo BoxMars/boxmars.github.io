@@ -1,5 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { getBlogPosts, markdownToHTML } from "@/data/blog";
+import { formatDate } from "@/lib/utils";
 import { ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -35,7 +36,7 @@ export default async function BlogPage() {
       {posts
         .sort((a, b) => {
           if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
+            new Date(a.metadata.lastUpdatedAt) > new Date(b.metadata.lastUpdatedAt)
           ) {
             return -1;
           }
@@ -51,9 +52,14 @@ export default async function BlogPage() {
                 <p className="tracking-tight">
                   {post.metadata.title}
                 </p>
-                <p className="h-6 text-xs text-muted-foreground">
-                  {post.metadata.publishedAt}
-                </p>
+                <div className="flex justify-between items-center mt-2 mb-8 text-xs max-w-[650px]">
+                    <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                      Updated at {post.metadata.lastUpdatedAt}
+                    </p>
+                    <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                      Publisbed at {post.metadata.publishedAt}
+                    </p>
+                </div>
               </div>
             </Link>
           </BlurFade>
