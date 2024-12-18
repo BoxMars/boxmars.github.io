@@ -22,7 +22,7 @@
     "gray-matter": "^4.0.3",
     "last-commit-log": "^3.4.0",
     "lucide-react": "^0.395.0",
-    "next": "14.2.4",
+    "next": "14.2.15",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
