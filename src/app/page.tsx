@@ -117,7 +117,7 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id='blog' className="print:hidden">
+      {/* <section id='blog' className="print:hidden">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <Link href='/blog' className="inline-flex items-center justify-center group">
@@ -154,7 +154,7 @@ export default async function Page() {
             </BlurFade>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
@@ -234,7 +234,7 @@ export default async function Page() {
         </div>
       </section>
 
-      <section id="skills">
+      {/* <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
@@ -247,7 +247,7 @@ export default async function Page() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
       <section id="projects" className="print:hidden">
         <div className="space-y-12 w-full">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
@@ -350,7 +350,7 @@ export default async function Page() {
       <section id='git'>
         <div className="text-xs text-slate-600 dark:text-slate-300 print:hidden">
           <p>
-          Copyright © 2024 Box, Zhang Huakang
+          Copyright © {new Date().getFullYear()} Box, Zhang Huakang
           </p>
           <p>Commit <Link
             href={'https://github.com/BoxMars/boxmars.github.io/commit/'+revision.hash}>
