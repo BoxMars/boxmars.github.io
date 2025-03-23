@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Computer Science Student. Focusing on **Edge Computeing**, **Large Language Model**. ",
   summary:
-    "I am currently a Year 2 Master's student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
+    "I am a Year 2 Master student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
   avatarUrl: "/taipei101.jpg",
   skills: [
     "Python",
