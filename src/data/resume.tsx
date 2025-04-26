@@ -2,7 +2,7 @@ import { Icons } from "@/components/icons";
 import { Github, HomeIcon, Linkedin, NotebookIcon } from "lucide-react";
 
 export const DATA = {
-  name: "Box",
+  name: "Huakang Zhang",
   initials: "Box",
   url: "https://boxz.dev",
   location: "Taipa, Macau S.A.R., China",
@@ -82,8 +82,8 @@ export const DATA = {
 
   research_experience: [
     {
-      company: "Univeristy of Macau",
-      lab: "State Key Laboratory of IoTSC",
+      company: "University of Macau",
+      lab: "State Key Laboratory for IoT for Smart City",
       href: "#",
       badges: [],
       location: "Macau S.A.R., China",
@@ -95,8 +95,8 @@ export const DATA = {
         "Focus on **Edge Computing** and **Large Language Model**.", 
     },
     {
-      company: "Univeristy of Macau",
-      lab: "State Key Laboratory of IoTSC",
+      company: "University of Macau",
+      lab: "State Key Laboratory for IoT for Smart City",
       href: "#",
       badges: ['Summer Research'],
       location: "Macau S.A.R., China",
@@ -107,22 +107,9 @@ export const DATA = {
       description:
         "Design a yoga teaching and grading system using **pose estimation** implemented on **edge devices**.", 
     },
-    // {
-    //   company: "Univeristy of Macau",
-    //   lab: "Educational Research Centre, FED",
-    //   href: "https://um.edu.mo",
-    //   badges: [],
-    //   location: "Macau S.A.R., China",
-    //   title: "Research Assistant",
-    //   logoUrl: "/um.png",
-    //   start: "Apr. 2022",
-    //   end: "Jul. 2022",
-    //   description:
-    //     "Focus on **Data Processing** of Weibo COVID-19 posts data, and perform LDA analysis on the data. ", 
-    // },
     {
-      company: "Univeristy of Macau",
-      lab: "State Key Laboratory of IoTSC",
+      company: "University of Macau",
+      lab: "State Key Laboratory for IoT for Smart City",
       href: "#",
       badges: ['Summer Research'],
       location: "Macau S.A.R., China",
@@ -168,7 +155,7 @@ export const DATA = {
     {
       title: "UM ARK",
       href: "https://umall.one",
-      dates: "Aug. 2022 - Present",
+      dates: "Aug. 2022 - Aug. 2023",
       active: true,
       description:
         "We integrated commonly used features for university life into an *ALL in One* solution. The cross-platform app, developed using React Native, is now available on the App Store and Google Play.",
@@ -182,7 +169,7 @@ export const DATA = {
       ],
       links: [
         {
-          type: "web",
+          type: "website",
           href: "https://umall.one",
           icon: <Icons.globe className="size-3" />,
         },
