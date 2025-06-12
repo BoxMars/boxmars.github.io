@@ -91,17 +91,17 @@ export default async function Page() {
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="print:hidden">
-              <Tooltip delayDuration={1000}>
-              <TooltipTrigger asChild>
-              <Avatar className="size-32 border">
+              {/* <Tooltip delayDuration={1000}>
+              <TooltipTrigger asChild> */}
+              <Avatar className="size-32">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
-              </TooltipTrigger>
+              {/* </TooltipTrigger>
               <TooltipContent side="bottom" className="">
                 <p>Taken in Taipei</p>
               </TooltipContent>
-              </Tooltip>
+              </Tooltip> */}
             </BlurFade>
           </div>
         </div>
