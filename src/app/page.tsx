@@ -26,7 +26,7 @@ export default async function Page() {
 
   const revision = await lcl.getLastCommit();
 
-  // console.log(revision)
+  console.log(revision)
 
   //sort by date
   reacent_blog=reacent_blog.sort((a, b) => {
@@ -108,10 +108,10 @@ export default async function Page() {
       </section>
       <section id="about" className="print:hidden">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About</h2>
+          <h2 className="font-bold text-lg pb-2">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans dark:prose-invert text-sm sm:text-base">
+          <Markdown className="prose max-w-full text-pretty font-sans dark:prose-invert text-sm sm:text-base text-primary">
             {DATA.summary}
           </Markdown>
         </BlurFade>
@@ -352,7 +352,7 @@ export default async function Page() {
           <p>
           Copyright © {new Date().getFullYear()} Box, Zhang Huakang
           </p>
-          <p>Commit <Link
+          <p>Last update on <span className="underline">{new Date(revision.committer.date*1000).toLocaleDateString('en-US')}</span> with commit <Link
             href={'https://github.com/BoxMars/boxmars.github.io/commit/'+revision.hash}>
             <span className="underline">{revision.shortHash}</span>
             </Link>

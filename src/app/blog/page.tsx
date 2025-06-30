@@ -18,21 +18,23 @@ export default async function BlogPage() {
   return (
     <section>
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <Link href="/" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center py-1">
+        <Link href="/" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center pb-10 space-x-1 justify-start">
           <ChevronLeftIcon
-            size={14}
+            size={16}
             />
-          Back to Home
+          <span>
+            Back to Home
+          </span>
         </Link>
       </BlurFade>
       <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="font-medium text-2xl mb-8 tracking-tighter">Blog</h1>
       </BlurFade>
-      <BlurFade delay={BLUR_FADE_DELAY * 2}>
+      {/* <BlurFade delay={BLUR_FADE_DELAY * 2}>
         <p className=" text-muted-foreground mb-4">
         Welcome to my blog! This is where I share updates on my recent studies in Computer Science in English or Chinese. Through this blog, I hope to document my personal growth and share insights and experiences I have gained along the way.
         </p>
-      </BlurFade>
+      </BlurFade> */}
       {posts
         .sort((a, b) => {
           if (
@@ -45,7 +47,7 @@ export default async function BlogPage() {
         .map((post, id) => (
           <BlurFade delay={BLUR_FADE_DELAY * 3 + id * 0.05} key={post.slug}>
             <Link
-              className="flex flex-col space-y-1 mb-4"
+              className="flex flex-col space-y-1"
               href={`/blog/${post.slug}`}
             >
               <div className="w-full flex flex-col">
@@ -53,11 +55,11 @@ export default async function BlogPage() {
                   {post.metadata.title}
                 </p>
                 <div className="flex justify-between items-center mt-2 mb-8 text-xs max-w-[650px]">
-                    <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                    {/* <p className="text-xs text-neutral-600 dark:text-neutral-400">
                       Updated at {post.metadata.lastUpdatedAt}
-                    </p>
+                    </p> */}
                     <p className="text-xs text-neutral-600 dark:text-neutral-400">
-                      Publisbed at {post.metadata.publishedAt}
+                      {formatDate(post.metadata.publishedAt)}
                     </p>
                 </div>
               </div>

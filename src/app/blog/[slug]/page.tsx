@@ -87,11 +87,13 @@ export default async function Blog({
           }),
         }}
       />
-      <Link href="/blog" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center py-1">
+      <Link href="/blog" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center pb-10 space-x-1 justify-start">
         <ChevronLeftIcon
-          size={14}
+          size={16}
           />
-        Back to Blog
+        <span>
+            Back to Blog
+        </span>
       </Link>
 
       <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
@@ -99,16 +101,19 @@ export default async function Blog({
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <Suspense fallback={<p className="h-5" />}>
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          {/* <p className="text-sm text-neutral-600 dark:text-neutral-400">
             Updated at {formatDate(post.metadata.lastUpdatedAt)}
-          </p>
+          </p> */}
+        {/* <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            <Link href="/" className="text-pretty">{DATA.name}</Link>
+        </p> */}
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            Publisbed at {formatDate(post.metadata.publishedAt)}
+            Published at {formatDate(post.metadata.publishedAt)}
           </p>
         </Suspense>
       </div>
       <article
-        className="prose dark:prose-invert"
+        className="prose dark:prose-invert mb-10 text-pretty"
         dangerouslySetInnerHTML={{ __html: post.source }}
       ></article>
       <Comments/>

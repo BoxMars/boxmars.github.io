@@ -80,14 +80,14 @@ export const ResumeCard = ({
                     ))}
                   </span>
                 )}
-                <ChevronRightIcon
+                {description && description?.length>0 && <ChevronRightIcon
                   className={cn(
                     "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100 print:hidden",
                     isExpanded ? "rotate-90" : "rotate-0"
                   )}
-                />
+                />}
               </h3>
-              <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+              <div className="text-xs sm:text-xs tabular-nums text-muted-foreground text-right">
                 {period}
               </div>
             </div>
