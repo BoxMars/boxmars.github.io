@@ -58,7 +58,7 @@ export default async function Blog({
   };
 }) {
   let post = await getPost(params.slug);
-  console.log(post.metadata);
+//   console.log(post.metadata);
   if (!post) {
     notFound();
   }

@@ -26,7 +26,7 @@ export default async function Page() {
 
   const revision = await lcl.getLastCommit();
 
-  console.log(revision)
+//   console.log(revision)
 
   //sort by date
   reacent_blog=reacent_blog.sort((a, b) => {
