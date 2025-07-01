@@ -1,1 +1,3 @@
-Based on [Magic UI](https://magicui.design/docs/templates/portfolio)
+[boxz.dev](https://boxz.dev)
+
+[boxmars.github.io](https://boxmars.github.io)
