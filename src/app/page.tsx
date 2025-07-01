@@ -16,6 +16,15 @@ import Markdown from "react-markdown";
 
 import { getLastCommit } from 'last-commit-log';
 
+import { Josefin_Sans } from "next/font/google";
+
+const josefin_sans = Josefin_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: "400",
+  display: "swap",
+});
+
 const BLUR_FADE_DELAY = 0.05;
 
 export default async function Page() {
@@ -49,7 +58,7 @@ export default async function Page() {
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-3xl xl:text-3xl/none print:hidden"
+                className={cn("text-3xl font-bold tracking-tighter sm:text-3xl xl:text-3xl/none print:hidden", josefin_sans.className)}
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
@@ -59,7 +68,7 @@ export default async function Page() {
                 yOffset={8}
                 text={'Zhang Huakang'}/>
               <BlurFade delay={BLUR_FADE_DELAY}>
-                <Markdown className="max-w-[600px] text-sm sm:text-base text-pretty print:hidden">
+                <Markdown className={cn("max-w-[600px] text-sm sm:text-base text-pretty print:hidden")}>
                   {DATA.description}
                 </Markdown>
                 <div className="flex items-center space-x-1 py-1 ml-[-10px]">
