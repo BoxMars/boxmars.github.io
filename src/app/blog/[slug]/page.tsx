@@ -1,5 +1,5 @@
 import { Comments } from "@/components/blog-comment";
-import { getPost } from "@/data/blog";
+import { getPost, getBlogPosts } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { cn, formatDate } from "@/lib/utils";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
@@ -48,6 +48,13 @@ export async function generateMetadata({
       images: [ogImage],
     },
   };
+}
+
+export async function generateStaticParams() {
+    let posts = await getBlogPosts();
+    return posts.map((post) => ({
+        slug: post.slug,
+    }));
 }
 
 export default async function Blog({
