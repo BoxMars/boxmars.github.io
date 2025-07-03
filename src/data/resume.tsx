@@ -53,12 +53,12 @@ export const DATA = {
       href: "#",
       badges: ['Internship'],
       location: "Shenzhen, China",
-      title: "Machine Leagring Engineer",
+      title: "Machine Learning Engineer",
       logoUrl: "",
       start: "Sep. 2021",
       end: "Dec. 2022",
       description:
-        "1. **Human Pose Estimation**: Forcusing on the 3D reconstruction from multiple views in gym, \n 2. **Video Codec**: Optimize the decoding process of video streaming from webcam, and \n 3. **Video Frame Synchronization**: Synchronize video frames from multiple webcams.",
+        "1. **Human Pose Estimation**: Focusing on the 3D reconstruction from multiple views in gym, \n 2. **Video Codec**: Optimize the decoding process of video streaming from webcam, and \n 3. **Video Frame Synchronization**: Synchronize video frames from multiple webcams.",
     },
   ],
   education: [
