@@ -93,7 +93,7 @@ export default async function Page() {
                         </Link>
                         </TooltipTrigger>
                         <TooltipContent side="bottom">
-                          <p>{name}</p>
+                          <p>{socail.name}</p>
                         </TooltipContent>
                         </Tooltip>
                       ))

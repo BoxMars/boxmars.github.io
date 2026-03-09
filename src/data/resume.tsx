@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { Github, HomeIcon, Linkedin, NotebookIcon } from "lucide-react";
+import { Github, HomeIcon, Linkedin, NotebookIcon, Cat } from "lucide-react";
 
 export const DATA = {
   name: "Huakang Zhang",
@@ -25,6 +25,12 @@ export const DATA = {
     email: "booxmaars@gmail.com",
     tel: "+853 6311XXXX",
     social: {
+      cat: {
+        name: "My Cat Felina",
+        url: "https://felina.boxz.dev",
+        icon: Cat,
+        navbar: true,
+      },
       GitHub: {
         name: "GitHub",
         url: "https://github.com/BoxMars",
@@ -35,7 +41,6 @@ export const DATA = {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/huakang-z-314592203/",
         icon: Linkedin,
-
         navbar: true,
       },
       email: {
