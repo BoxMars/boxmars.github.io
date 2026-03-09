@@ -20,6 +20,8 @@ export function formatDate(date: string) {
     year: "numeric",
   });
 
+  return fullDate;
+
   if (daysAgo < 1) {
     return "Today";
   } else if (daysAgo < 7) {

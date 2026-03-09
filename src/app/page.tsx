@@ -18,6 +18,8 @@ import { getLastCommit } from 'last-commit-log';
 
 import { Josefin_Sans } from "next/font/google";
 
+import { CopyrightInfo } from "@/components/copyright-info";
+
 const josefin_sans = Josefin_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -357,16 +359,7 @@ export default async function Page() {
         </div>
       </section> */}
       <section id='git'>
-        <div className="text-xs text-slate-600 dark:text-slate-300 print:hidden">
-          <p>
-          Copyright © {new Date().getFullYear()} Box, Zhang Huakang
-          </p>
-          <p>Last update on <span className="underline">{new Date(revision.committer.date*1000).toLocaleDateString('en-US')}</span> with commit <Link
-            href={'https://github.com/BoxMars/boxmars.github.io/commit/'+revision.hash}>
-            <span className="underline">{revision.shortHash}</span>
-            </Link>
-          </p>
-        </div>
+        <CopyrightInfo revision={revision} />
       </section>
     </main>
   );

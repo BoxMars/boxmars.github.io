@@ -10,7 +10,7 @@ export const DATA = {
   description:
     "Computer Science Student. Focusing on **Edge Computing**, **Large Language Model**. ",
   summary:
-    "I am a Year 3 Master student in Computer Science at the [University of Macau](https://www.um.edu.mo/), and the main developer of [What2Reg @UM](https://umeh.top)",
+    "I’m pursuing a Master’s in Computer Science at the [University of Macau](https://www.um.edu.mo/) and am the main developer of [What2Reg @UM](https://umeh.top).",
   avatarUrl: "/me.png",
   skills: [
     "Python",
@@ -40,7 +40,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "mailto:booxmaars@gmail.com",
+        url: "mailto:me@boxz.dev",
         icon: Icons.email,
         navbar: true,
       },
