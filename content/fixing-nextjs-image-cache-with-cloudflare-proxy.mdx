@@ -1,0 +1,219 @@
+---
+title: "Fixing Next.js Image Cache Conflict with Cloudflare Proxy"
+publishedAt: "2026-02-13"
+lastUpdatedAt: "2026-02-13"
+summary: "A practical record of how I debugged stale images caused by Next.js image optimization and Cloudflare proxy caching the same asset at different layers."
+---
+
+## TL;DR
+
+If images behind `next/image` stay stale after updating assets, and the site is also behind Cloudflare proxy, the problem is often not only Next.js cache or only Cloudflare cache. It is the interaction between both.
+
+My final fix was:
+
+1. make image URLs versioned
+2. stop treating mutable assets as permanently cacheable
+3. make Cloudflare cache rules match the application behavior instead of fighting it
+
+## Background
+
+I ran into a frustrating issue on a Next.js site behind Cloudflare proxy.
+
+The symptom looked simple:
+
+- I replaced an image on the origin server
+- I refreshed the page
+- the browser still showed the old image
+
+At first I assumed the browser cache had not expired. Then I checked the Network panel and found the request was hitting `/_next/image`.
+
+That changed the debugging path completely.
+
+In this setup, there were actually multiple caching layers:
+
+1. browser cache
+2. Next.js image optimization cache
+3. Cloudflare edge cache
+4. origin asset cache headers
+
+Once I looked at it this way, the stale image finally made sense.
+
+## Why This Happens
+
+The key problem is that `next/image` turns the original asset request into another cached URL, usually something like:
+
+```text
+/_next/image?url=%2Fuploads%2Favatar.png&w=1080&q=75
+```
+
+If the source image path stays the same, this optimized URL also stays the same.
+
+So after replacing `/uploads/avatar.png`, all of the following may still believe the old optimized result is valid:
+
+- Next.js image cache
+- Cloudflare edge cache
+- browser cache for the optimized URL
+
+This is why simply "uploading a new file with the same name" often fails in production even when local development looks fine.
+
+## The Wrong Fixes I Tried First
+
+My first attempts were predictable and not very good:
+
+### Purge Cloudflare Cache Only
+
+This sometimes worked, but not reliably.
+
+Why? Because Cloudflare was only one layer. If the origin or Next.js still served a cached optimized image for the same `/_next/image?...` URL, the stale result returned immediately.
+
+### Disable Cloudflare Proxy Entirely
+
+This avoided one cache layer, but it was too blunt.
+
+The problem was not that Cloudflare existed. The problem was that the cache key did not reflect asset updates.
+
+### Add Random Query Strings Manually
+
+This works in emergencies:
+
+```tsx
+<Image src={`/uploads/avatar.png?t=${Date.now()}`} alt="avatar" />
+```
+
+But this is a bad long-term fix. It destroys cache efficiency and makes every render look like a new resource.
+
+## The Better Fix
+
+The durable solution is to make the image URL change whenever the content changes.
+
+For example, instead of saving:
+
+```text
+/uploads/avatar.png
+```
+
+I now prefer one of these:
+
+```text
+/uploads/avatar-v2.png
+```
+
+or:
+
+```text
+/uploads/avatar.png?v=20260313
+```
+
+Then the component becomes:
+
+```tsx
+<Image
+  src={`/uploads/avatar.png?v=${imageVersion}`}
+  alt="avatar"
+  width={320}
+  height={320}
+/>
+```
+
+Now the optimized `/_next/image` request also changes, which means:
+
+- browser cache sees a new URL
+- Cloudflare sees a new cache key
+- Next.js image optimizer generates a new result
+
+This is the simplest fix because it aligns every layer with the real lifecycle of the asset.
+
+## What I Changed on Cloudflare
+
+After fixing the URL strategy, I still adjusted Cloudflare behavior to reduce future surprises.
+
+My rule of thumb is:
+
+- immutable assets can be cached aggressively
+- mutable user-uploaded images should not pretend to be immutable
+
+If uploaded images may be replaced under the same logical path, Cloudflare should not cache them as if they were build artifacts.
+
+For example, I avoid a rule like this for mutable uploads:
+
+```text
+Cache Everything: /uploads/*
+Edge TTL: 1 month
+```
+
+That policy is fine for hashed static assets, but risky for files that might be overwritten.
+
+Instead, I use one of these approaches:
+
+### Option 1: Versioned URL + Aggressive Cache
+
+If every image update produces a new URL, Cloudflare can cache aggressively.
+
+This is the best option when I control the image reference in application code or database records.
+
+### Option 2: Same URL + Bypass Edge Cache
+
+If I cannot change the asset URL strategy, I would rather reduce or bypass Cloudflare caching for those image paths.
+
+This gives up some performance, but at least it restores correctness.
+
+Between the two, I strongly prefer Option 1.
+
+## What I Changed on Next.js Side
+
+I also stopped thinking of `next/image` as a magic freshness layer.
+
+`next/image` is great for:
+
+- resizing
+- optimization
+- responsive loading
+- bandwidth reduction
+
+But it does not solve cache invalidation by itself.
+
+If the underlying image path is stable while the file contents change, stale optimized output is expected.
+
+So for content that changes frequently, I now treat image versioning as part of the data model.
+
+For example:
+
+```ts
+type UserProfile = {
+  avatarPath: string;
+  avatarVersion: number;
+};
+```
+
+Then:
+
+```tsx
+<Image
+  src={`${profile.avatarPath}?v=${profile.avatarVersion}`}
+  alt="User avatar"
+  width={128}
+  height={128}
+/>
+```
+
+This is much easier to reason about than waiting for multiple caches to expire in the correct order.
+
+## Practical Debugging Checklist
+
+When I suspect this issue now, I check these questions in order:
+
+1. Is the browser requesting the original image URL or `/_next/image`?
+2. Does the image URL change after the asset is updated?
+3. Is Cloudflare caching the optimized response?
+4. Are origin headers marking a mutable asset as long-lived?
+5. Am I overwriting files with the same name instead of creating versioned assets?
+
+Usually, the fifth question reveals the real problem.
+
+## Final Note
+
+The conflict between Next.js image cache and Cloudflare proxy is not really a framework bug. It is a cache invalidation design problem.
+
+Once I stopped asking "how do I force refresh this image?" and started asking "what should the cache key be when the content changes?", the solution became much cleaner.
+
+For mutable images, the safest answer is simple: give new content a new URL.

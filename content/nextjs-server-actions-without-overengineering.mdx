@@ -1,0 +1,163 @@
+---
+title: "Using Server Actions Without Overengineering"
+publishedAt: "2025-10-07"
+lastUpdatedAt: "2025-10-07"
+summary: "A note on when Server Actions make a Next.js app simpler, and when they just move complexity around."
+---
+
+## TL;DR
+
+Server Actions are one of my favorite features in modern Next.js, but only when I use them for narrow workflows: forms, mutations, and cache revalidation.
+
+## Background
+
+In older React applications, I often ended up building the same stack again and again:
+
+1. a client form
+2. a submit handler
+3. a custom API route
+4. some manual loading and error plumbing
+5. a refetch after mutation
+
+It worked, but the distance between the form and the mutation was longer than it needed to be.
+
+Server Actions compress that distance.
+
+## The Small Example That Convinced Me
+
+Here is the shape I now prefer for simple create flows:
+
+```tsx
+// app/projects/actions.ts
+"use server";
+
+import { revalidatePath } from "next/cache";
+
+export async function createProject(formData: FormData) {
+  const name = String(formData.get("name") || "").trim();
+
+  if (!name) {
+    throw new Error("Project name is required");
+  }
+
+  await db.project.create({
+    data: { name },
+  });
+
+  revalidatePath("/projects");
+}
+```
+
+And the form:
+
+```tsx
+// app/projects/new-project-form.tsx
+"use client";
+
+import { createProject } from "./actions";
+
+export function NewProjectForm() {
+  return (
+    <form action={createProject} className="space-y-4">
+      <input name="name" placeholder="Project name" />
+      <button type="submit">Create</button>
+    </form>
+  );
+}
+```
+
+This is the first time a full-stack mutation flow in React felt shorter, not more abstract.
+
+## Where Server Actions Actually Help
+
+I think Server Actions are best for operations with these properties:
+
+- triggered by a form or button
+- executed on the server
+- followed by a redirect or cache invalidation
+- not reused by many external consumers
+
+In this case, using a separate REST endpoint often creates ceremony without creating clarity.
+
+## Where I Still Avoid Them
+
+I do not think Server Actions should become the answer to everything.
+
+If I need:
+
+- a public API for other clients
+- a webhook endpoint
+- a resource consumed by mobile apps
+- an interface with strict versioning requirements
+
+then route handlers still make more sense.
+
+The important point is that Server Actions are not a replacement for all server boundaries. They are a good fit for UI-driven mutations inside a Next.js application.
+
+## A Mistake I Made
+
+At one point, I tried to hide too much business logic directly inside the action file. Validation, authorization, database writes, side effects, email sending, and analytics were all packed into one function.
+
+That version looked short, but it was not simple.
+
+Now I prefer:
+
+1. keep the action thin
+2. call a service function for real business logic
+3. revalidate or redirect at the edge of the action
+
+For example:
+
+```tsx
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { createProjectService } from "@/src/server/project-service";
+
+export async function createProject(formData: FormData) {
+  const name = String(formData.get("name") || "");
+
+  await createProjectService({ name });
+  revalidatePath("/projects");
+}
+```
+
+This structure makes the action easy to read, while keeping the domain logic testable.
+
+## Error Handling
+
+I also learned that throwing raw errors from actions is acceptable during development, but too rough for real product flows.
+
+For user-facing forms, I now prefer returning a small state object instead of only relying on thrown exceptions.
+
+```tsx
+"use server";
+
+type ActionState = {
+  error?: string;
+};
+
+export async function createProject(
+  prevState: ActionState,
+  formData: FormData
+): Promise<ActionState> {
+  const name = String(formData.get("name") || "").trim();
+
+  if (!name) {
+    return { error: "Project name is required" };
+  }
+
+  await db.project.create({ data: { name } });
+  return {};
+}
+```
+
+This is not as flashy as "full server magic", but it is much easier to ship.
+
+## Final Note
+
+The best thing about Server Actions is not that they are new. It is that they let us place write operations closer to the UI that triggers them.
+
+When used with restraint, they remove layers.
+
+When used carelessly, they just hide layers.

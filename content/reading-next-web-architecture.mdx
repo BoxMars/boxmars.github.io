@@ -1,0 +1,317 @@
+---
+title: "UMhelper/next-web Architecture"
+publishedAt: "2026-03-12"
+lastUpdatedAt: "2026-03-12"
+summary: "An engineering-focused recap of the UMHelper next-web project: architecture, deployment choices, data access patterns, and the implementations that worked surprisingly well."
+---
+
+## TL;DR
+
+I recently revisited my `UMHelper/next-web` project and realized the interesting part is not any single framework choice. The interesting part is how a set of pragmatic decisions came together into a fairly complete engineering solution for a course review platform.
+
+The stack is roughly:
+
+1. Next.js App Router for routing, rendering, metadata, and static generation
+2. Supabase for relational data access, RPC, and lightweight backend capability
+3. Clerk for authentication and user identity
+4. OpenNext + Cloudflare Workers for deployment
+5. A mixed UI stack of Tailwind, shadcn/ui, Radix, and a scheduler library for high-complexity interactions
+
+What I still like about this project is that most technical decisions were made in service of a concrete product constraint, not for architectural purity.
+
+## Background
+
+`What2Reg @ UM` is a course review and course planning website for University of Macau students. From an engineering perspective, the product requirements are more specific than they look at first glance:
+
+- content pages must be indexable by search engines
+- course pages should be fast to load and easy to share
+- search must support course codes, course titles, and instructor names
+- review pages need lightweight social interaction, but not a full social graph
+- timetable planning should be frictionless, ideally without forcing login
+- the system should stay maintainable for a small team
+
+That immediately pushes the architecture away from a traditional heavy custom backend and toward a leaner composition of hosted services and route-based application code.
+
+## Why Next.js Was The Right Core
+
+For this project, Next.js is not just a React framework choice. It is the thing that holds together page rendering, route structure, SEO, and deployment compatibility.
+
+### Route structure matches the domain naturally
+
+The project has several route families that map cleanly to App Router:
+
+- `/catalog/[...departments]`
+- `/course/[code]`
+- `/professor/[...name]`
+- `/timetable`
+- `/api/*`
+
+That matters because this product is not dashboard-first. It is content-first. Users navigate through entities such as courses, faculties, instructors, and reviews. A file-based route tree works very well for that.
+
+### Static generation is used where the data model allows it
+
+Several pages implement `generateStaticParams()`:
+
+- course pages pre-generate route params from `course_noporf`
+- professor pages pre-generate params from `prof_with_course`
+- catalog pages pre-generate faculty and department combinations
+
+This is a strong fit for a course review platform because most of the route space is known in advance and changes relatively slowly compared with request volume. That gives the project a better SEO baseline and reduces runtime work without adding a separate static site pipeline.
+
+### Metadata and sitemap are first-class parts of the app
+
+The project uses page-level metadata generation and a dynamic `sitemap.ts`. That is not glamorous work, but it is exactly the kind of infrastructure detail that matters for this type of site.
+
+In other words, the architecture does not treat SEO as a post-processing concern. It is encoded directly into the routing layer.
+
+## Data Layer: Supabase As A Practical Backend
+
+The data layer is probably the most pragmatic part of the whole project.
+
+Instead of building a custom backend service with its own ORM, controller layer, and deployment path, the project leans heavily on Supabase for:
+
+- direct table queries
+- RPC functions
+- simple relational lookups
+- review and vote storage
+- course and professor mappings
+
+This works because the domain is read-heavy and relationally simple. Most requests are one of these:
+
+- fetch a course
+- fetch instructors for a course
+- fetch comments for a review page
+- fetch schedules for a course and professor pair
+- run a fuzzy search
+
+That is exactly the kind of application where Supabase can replace a lot of custom backend code without becoming a bottleneck in developer velocity.
+
+## The Fallback Strategy For Course Data
+
+One implementation detail I still find solid is the fallback path in the course data pipeline.
+
+The project first requests course information from the UM API:
+
+```ts
+https://api.data.um.edu.mo/service/academic/course_catalog/all?course_code=...
+```
+
+If that response is empty or fails, it falls back to local course data stored in Supabase.
+
+This is a small but meaningful resilience layer.
+
+It avoids a common failure mode in student projects: treating an external data source as perfectly available. In practice, public or semi-public academic APIs are often incomplete, rate-limited, or temporarily unstable.
+
+The fallback keeps the page functional even if freshness is reduced. For this product, that trade-off is correct.
+
+## Why Clerk Makes Sense Here
+
+Authentication is not the core problem this project is trying to solve. Reviews, replies, and voting are.
+
+Using Clerk was a good engineering shortcut because it removed a large amount of accidental complexity:
+
+- session management
+- sign-in and sign-up flows
+- modal auth UI
+- user identity retrieval
+- backend-side user lookups
+
+The app uses Clerk both client-side and server-side:
+
+- `useUser()` for interaction gating in the UI
+- Clerk backend SDK for resolving user details by ID
+
+That keeps identity consistent without forcing the project to own an auth subsystem.
+
+## Deployment: OpenNext On Cloudflare Workers
+
+This is one of the more distinctive engineering choices in the project.
+
+The deployment stack is not the standard “build Next.js and ship to Vercel” path. Instead, it uses:
+
+- `opennextjs-cloudflare`
+- `wrangler`
+- Cloudflare Workers
+- Cloudflare image bindings
+
+I think this is an interesting move for two reasons.
+
+### 1. It preserves the Next.js programming model
+
+The project still gets to keep:
+
+- App Router
+- route handlers
+- metadata
+- sitemap generation
+- dynamic routes
+- Next.js image support
+
+So the product code stays in a familiar Next.js model rather than being rewritten around a different rendering stack.
+
+### 2. It changes the infrastructure economics
+
+For a public content-heavy website with mostly read traffic, Cloudflare is a reasonable deployment target. The project effectively decouples the developer ergonomics of Next.js from the default hosting assumptions of the ecosystem.
+
+That is a useful pattern. It means the framework choice and the infrastructure choice do not need to be locked together.
+
+## UI Architecture: Mixed, But Rational
+
+The UI layer is not ideologically pure, but it is rational.
+
+The stack includes:
+
+- Tailwind CSS
+- shadcn/ui
+- Radix primitives
+- MUI components
+- `@aldabil/react-scheduler`
+
+From a design-system perspective, this is mixed. From a delivery perspective, it is defensible.
+
+### Tailwind + shadcn/ui for most product surfaces
+
+This covers the majority of the interface well:
+
+- forms
+- buttons
+- drawers
+- dialogs
+- cards
+- switches
+- layout composition
+
+That gives fast iteration for standard product UI without much ceremony.
+
+### A dedicated scheduler library for the timetable
+
+The timetable page is one of the highest-complexity surfaces in the app. Building a calendar-style week view from scratch would have been a poor use of time.
+
+Instead, the project converts local timetable data into scheduler events and renders them through `@aldabil/react-scheduler`.
+
+This is exactly the kind of place where selective library adoption is better than design-system purity. The timetable feature has a complexity profile very different from the rest of the application, so it makes sense to solve it with a more specialized component.
+
+## Engineering Decisions I Still Like
+
+A few implementation details still stand out to me as good engineering trade-offs.
+
+## 1. Timetable Cart In localStorage
+
+The timetable feature stores selected course sections in `localStorage` and reconstructs calendar events from that state on the timetable page.
+
+This is a strong decision for the problem being solved.
+
+Why it works:
+
+- timetable planning is session-local and user-specific
+- it does not require immediate server persistence
+- forcing authentication would increase friction
+- browser persistence is enough for the core workflow
+
+This avoids introducing backend state for something that is essentially a temporary planning artifact.
+
+## 2. Stable Anonymous Identity Via Emoji Hashing
+
+The comment system does not expose a user’s real identity directly in replies. Instead, it hashes the user ID and maps it to an emoji avatar.
+
+That is a small implementation, but a surprisingly good product-engineering move.
+
+It provides:
+
+- a sense of continuity across comments
+- a lightweight anonymity layer
+- lower social pressure than real profile images
+
+For a course review platform, that is a better fit than either full exposure or completely indistinguishable anonymous posting.
+
+## 3. Incremental Reply Updates Instead Of Full Refresh
+
+Reply submission is handled through an API route and then inserted into the local reply list immediately after the response returns.
+
+The important thing here is not that this is “real-time”. It is that the interaction stays local:
+
+1. submit reply
+2. receive created reply payload
+3. append it into current UI state
+4. keep the user in context
+
+This avoids a full page refresh and avoids re-fetching the whole comment tree for a small mutation. For the scale of this application, that is the right level of sophistication.
+
+## 4. A Custom Masonry Layer For Uneven Card Content
+
+The project includes its own `Masonry` component that:
+
+- adjusts column count based on viewport width
+- distributes children across columns manually
+- uses `auto-animate` for smoother updates
+
+For a card-heavy application with uneven content heights, this is a reasonable custom abstraction. It is lightweight, easy to integrate with existing components, and avoids the overhead of adopting a more opinionated layout system.
+
+The component is not trying to be a general-purpose grid engine. It is tailored to the needs of course cards, professor cards, and comment cards, which is exactly why it fits well.
+
+## 5. Search Flow Is Small But Well-Bounded
+
+The homepage search component uses `react-hook-form` and `zod`, then routes users into either course search or instructor search.
+
+This is a subtle but good architectural boundary.
+
+The homepage does not try to become an all-in-one async search shell with live result orchestration and complex state. It just captures intent cleanly and routes to the correct result context.
+
+That keeps the search entry point simple and pushes complexity into dedicated pages where it belongs.
+
+## 6. SEO-Aware Content Exposure
+
+One of the most interesting implementation details is on the course page.
+
+Some long-form content, such as course description and intended learning outcomes, is shown in dialogs for users. But the page also includes hidden content blocks intended to remain visible to bots.
+
+This is a practical compromise between UI cleanliness and crawlability.
+
+If the product had relied only on dialog-triggered content, search visibility for that information could have been weaker. The extra content exposure keeps the page useful to crawlers without forcing all text into the visible layout.
+
+## API Layer: Thin By Design
+
+The route handlers in `app/api/*` are relatively thin. Most of the real work is delegated to:
+
+- Supabase queries
+- Supabase RPC
+- Clerk SDK
+- utility functions
+
+I think that is appropriate for this codebase.
+
+The app is not trying to create a massive internal backend framework inside Next.js. It uses route handlers where they are useful, but keeps them narrow. That is a better fit for a small product than inventing several layers of abstraction too early.
+
+## Trade-Offs And Constraints
+
+This project is practical, but not “pure”, and that is worth stating clearly.
+
+There are a few visible trade-offs:
+
+- the UI stack is mixed rather than unified
+- data access functions combine query logic and some domain shaping
+- API routes, Supabase RPC, and client logic share responsibility somewhat loosely
+- some pages favor directness over strict layering
+
+From a textbook architecture perspective, that can look messy.
+
+From a product engineering perspective, it is understandable. The project optimizes for shipping a useful platform with a small team and limited maintenance bandwidth.
+
+That said, if I were evolving this codebase further, the first technical improvements I would consider are:
+
+1. formalize a service layer between route handlers and data access
+2. standardize the UI component strategy around one primary system
+3. move more write-path validation into shared schema-based boundaries
+4. make cache behavior and rendering mode more explicit page by page
+
+Those would improve maintainability without changing the product model.
+
+## Final Note
+
+Looking back, I think the strongest part of `UMHelper/next-web` is that it understands its own scope.
+
+It does not try to be a generic community platform, a custom auth stack, or a full enterprise backend. It focuses on a bounded domain and uses engineering decisions that are proportionate to that domain.
+
+That is why the architecture works.
+
+The interesting lesson here is not “use Next.js” or “use Supabase”. The real lesson is that a good small-to-medium product stack often comes from choosing where *not* to build custom infrastructure.

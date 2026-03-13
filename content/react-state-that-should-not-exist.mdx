@@ -1,0 +1,135 @@
+---
+title: "React State That Should Not Exist"
+publishedAt: "2025-07-06"
+lastUpdatedAt: "2025-07-06"
+summary: "A practical reminder that many React bugs come from storing derived values as state when they should have stayed as plain computation."
+---
+
+## TL;DR
+
+One of the easiest ways to make a React component fragile is to store too much in state. If a value can be derived from props or existing state during render, I usually do not store it separately anymore.
+
+## Background
+
+A pattern I used a lot when learning React looked like this:
+
+```tsx
+const [items, setItems] = useState<Product[]>([]);
+const [filteredItems, setFilteredItems] = useState<Product[]>([]);
+const [query, setQuery] = useState("");
+
+useEffect(() => {
+  setFilteredItems(
+    items.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    )
+  );
+}, [items, query]);
+```
+
+This code is not unusual. It also creates two problems:
+
+1. duplicated state
+2. synchronization logic that can drift later
+
+The more derived arrays, counters, booleans, and maps we store, the more chances we create for stale UI.
+
+## A Simpler Version
+
+Most of the time, this is enough:
+
+```tsx
+const [items, setItems] = useState<Product[]>([]);
+const [query, setQuery] = useState("");
+
+const filteredItems = items.filter((item) =>
+  item.name.toLowerCase().includes(query.toLowerCase())
+);
+```
+
+This version has fewer moving parts and fewer failure modes.
+
+React will re-run the component anyway. Computing a filtered array during render is often cheaper than maintaining another state machine around it.
+
+## What I No Longer Store
+
+These values are often better as derived values:
+
+- filtered lists
+- sorted lists
+- totals and counts
+- `isEmpty` flags
+- `hasError` flags that can be computed from another object
+- selected object references that can be recovered from `selectedId`
+
+For example, instead of:
+
+```tsx
+const [selectedUser, setSelectedUser] = useState<User | null>(null);
+```
+
+I prefer:
+
+```tsx
+const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+
+const selectedUser =
+  users.find((user) => user.id === selectedUserId) ?? null;
+```
+
+This becomes especially useful after refetching data. The selected identity survives naturally, while the object reference does not become stale.
+
+## What State Is Still Good For
+
+I am not arguing against state itself. React state is still the right tool for:
+
+- user input
+- async lifecycle state
+- toggles and visibility
+- optimistic updates
+- local interaction details that are not derivable elsewhere
+
+The distinction I care about is simple:
+
+- source of truth should be state
+- result of computation should usually not
+
+## About `useMemo`
+
+When people remove derived state, they often immediately add `useMemo`.
+
+I think that is another place where we overreact.
+
+Bad:
+
+```tsx
+const filteredItems = useMemo(() => {
+  return items.filter((item) =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
+}, [items, query]);
+```
+
+This is not always wrong, but it should not be the default move. If the computation is cheap, the memo adds cognitive cost without meaningful performance benefit.
+
+I now add `useMemo` only when one of these is true:
+
+- the computation is measurably expensive
+- the value is passed to memoized children and identity matters
+- profiling shows the rerender cost is real
+
+## A Good Smell Test
+
+When I want to introduce new state, I ask:
+
+1. Is this value entered or mutated directly by the user?
+2. Is this value the source of truth?
+3. Can I recompute it from what I already have?
+
+If the answer to the third question is yes, I usually stop before adding another `useState`.
+
+## Final Note
+
+A lot of React code gets complicated not because React is hard, but because we keep building synchronization problems for ourselves.
+
+Removing unnecessary state does not just make components shorter. It makes them more honest.

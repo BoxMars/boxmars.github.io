@@ -1,0 +1,147 @@
+---
+title: "Next.js Cache Is Not Magic"
+publishedAt: "2025-11-17"
+lastUpdatedAt: "2025-11-17"
+summary: "A practical note on why my Next.js page did not update after deployment, and how I now reason about cache, revalidate, and dynamic rendering."
+---
+
+## TL;DR
+
+In this post, I want to record one lesson I learned after building several small Next.js projects: when a page does not update, the problem is usually not React. It is usually cache.
+
+## Background
+
+When I first moved from a traditional React SPA to the App Router in Next.js, I was impressed by how much work the framework handled for me. Server Components, route segment config, `fetch` cache options, and static generation all looked elegant.
+
+Then I hit the classic issue:
+
+- I updated data in my database.
+- I redeployed the app.
+- The page still showed old content.
+
+At that moment, my first instinct was wrong. I checked state, component props, and even whether my deployment platform used an old image. In the end, the page was cached exactly as Next.js was designed to do.
+
+## Why It Feels Confusing
+
+In React, we are trained to think in a direct chain:
+
+1. state changes
+2. component re-renders
+3. UI updates
+
+But in Next.js App Router, there are more layers:
+
+1. the `fetch` request may be cached
+2. the route may be statically rendered
+3. the page may be revalidated only after a given interval
+
+So when the UI looks stale, the real question is not "why did React not render?" but "which layer decided this result can be reused?"
+
+## My Current Mental Model
+
+I now force myself to classify each page into one of these buckets before writing code.
+
+### 1. Static Content
+
+If the data changes rarely, I let Next.js cache it.
+
+```tsx
+async function Page() {
+  const posts = await fetch("https://api.example.com/posts", {
+    next: { revalidate: 3600 },
+  }).then((res) => res.json());
+
+  return <PostList posts={posts} />;
+}
+```
+
+This is ideal for blog pages, changelogs, and documentation. Cheap, stable, and fast.
+
+### 2. Dynamic Content
+
+If the page must always reflect the latest state, I make that decision explicit.
+
+```tsx
+export const dynamic = "force-dynamic";
+
+async function Page() {
+  const me = await fetch("https://api.example.com/me", {
+    cache: "no-store",
+  }).then((res) => res.json());
+
+  return <Dashboard user={me} />;
+}
+```
+
+I used to avoid this because it felt like "giving up optimization". Now I think that is the wrong framing. Correctness comes first. If a dashboard is user-specific and changes often, serving stale data quickly is not a win.
+
+### 3. Hybrid Content
+
+Some pages are mostly static, but one part needs to update after a mutation.
+
+This is where `revalidatePath` or `revalidateTag` starts to make sense.
+
+```tsx
+"use server";
+
+import { revalidatePath } from "next/cache";
+
+export async function createPost(formData: FormData) {
+  const title = String(formData.get("title") || "");
+
+  await db.post.create({
+    data: { title },
+  });
+
+  revalidatePath("/blog");
+}
+```
+
+This pattern feels much cleaner than introducing client-side refetching for everything.
+
+## A Practical Rule I Follow
+
+Before adding `useEffect`, SWR, or client state to "fix freshness", I ask:
+
+- Is the data stale because the client is outdated?
+- Or is the server intentionally serving cached output?
+
+That distinction matters a lot.
+
+If the stale result comes from the server cache, adding more client logic only hides the model. The app becomes harder to reason about, and the bug returns later in a different form.
+
+## What I Changed In My Projects
+
+I now make cache policy visible near the data access itself.
+
+Bad:
+
+```tsx
+const data = await fetch(url).then((res) => res.json());
+```
+
+Better:
+
+```tsx
+const data = await fetch(url, {
+  next: { revalidate: 600 },
+}).then((res) => res.json());
+```
+
+Or:
+
+```tsx
+const data = await fetch(url, {
+  cache: "no-store",
+}).then((res) => res.json());
+```
+
+This small change has a big benefit: six weeks later, I can still understand what the page is supposed to do.
+
+## Final Note
+
+The main thing I misunderstood about Next.js was not the API. It was the default philosophy.
+
+Next.js assumes caching is valuable and safe unless we say otherwise. That is often a good default, but only if we are honest about the kind of page we are building.
+
+Now, when a page refuses to update, I do not debug React first. I debug the cache boundary first.
