@@ -38,7 +38,7 @@ export default async function BlogPage() {
       {posts
         .sort((a, b) => {
           if (
-            new Date(a.metadata.lastUpdatedAt) > new Date(b.metadata.lastUpdatedAt)
+            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
           ) {
             return -1;
           }
