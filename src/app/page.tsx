@@ -18,7 +18,6 @@ import { getLastCommit } from 'last-commit-log';
 
 import { Josefin_Sans } from "next/font/google";
 
-import { CopyrightInfo } from "@/components/copyright-info";
 
 const josefin_sans = Josefin_Sans({
   subsets: ["latin"],
@@ -32,14 +31,11 @@ const BLUR_FADE_DELAY = 0.05;
 export default async function Page() {
   let reacent_blog=await getBlogPosts();
 
-  const LCL = require('last-commit-log');
-  const lcl = new LCL();
+  // const LCL = require('last-commit-log');
+  // const lcl = new LCL();
 
-  const revision = await lcl.getLastCommit();
+  // const revision = await lcl.getLastCommit();
 
-//   console.log(revision)
-
-  //sort by date
   reacent_blog=reacent_blog.sort((a, b) => {
     if (
       new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
@@ -128,45 +124,6 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      {/* <section id='blog' className="print:hidden">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <Link href='/blog' className="inline-flex items-center justify-center group">
-              <h2 className="text-xl font-bold">Recent Blog</h2>
-              <ChevronRightIcon
-                  className={cn(
-                    "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100 print:hidden",
-                  )}
-                />
-            </Link>
-          </BlurFade>
-          {reacent_blog && reacent_blog.sort((a, b) => {
-          if (
-            new Date(a.metadata.lastUpdatedAt) > new Date(b.metadata.lastUpdatedAt)
-          ) {
-            return -1;
-          }
-          return 1;
-        }).map((post, id) => (
-            <BlurFade
-              key={post.slug}
-              delay={BLUR_FADE_DELAY * 4 + id * 0.05}
-            >
-              <ResumeCard
-                key={post.slug}
-                logoUrl=""
-                altText={post.metadata.title}
-                title={post.metadata.title}
-                description={post.metadata.summary}
-                href={`/blog/${post.slug}`}
-                period={post.metadata.lastUpdatedAt}
-                type="blog"
-              />
-            </BlurFade>
-          ))}
-        </div>
-      </section> */}
-
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -245,20 +202,6 @@ export default async function Page() {
         </div>
       </section>
 
-      {/* <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
-          </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge className="text-xs" key={skill}>{skill}</Badge>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section> */}
       <section id="projects" className="print:hidden">
         <div className="space-y-12 w-full">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
@@ -290,77 +233,7 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      {/* <section id="hackathons">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Hackathons
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I like building things
-                </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During my time in university, I attended{" "}
-                  {DATA.hackathons.length}+ hackathons. People from around the
-                  country would come together and build incredible things in 2-3
-                  days. It was eye-opening to see the endless possibilities
-                  brought to life by a group of motivated and passionate
-                  individuals.
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-              {DATA.hackathons.map((project, id) => (
-                <BlurFade
-                  key={project.title + project.dates}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    dates={project.dates}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </ul>
-          </BlurFade>
-        </div>
-      </section> */}
-      {/* <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Contact
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in Touch
-              </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
-                <Link
-                  href={DATA.contact.social.X.url}
-                  className="text-blue-500 hover:underline"
-                >
-                  with a direct question on twitter
-                </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
-                soliciting.
-              </p>
-            </div>
-          </BlurFade>
-        </div>
-      </section> */}
-      <section id='git'>
-        <CopyrightInfo revision={revision} />
-      </section>
+      
     </main>
   );
 }

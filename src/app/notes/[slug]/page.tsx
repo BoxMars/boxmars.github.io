@@ -1,5 +1,5 @@
-import { Comments } from "@/components/blog-comment";
-import { getPost, getBlogPosts } from "@/data/blog";
+
+import { getNote, getNotes } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
 import { ChevronLeftIcon } from "lucide-react";
@@ -15,20 +15,20 @@ export async function generateMetadata({
     slug: string;
   };
 }): Promise<Metadata | undefined> {
-  let post = await getPost(params.slug);
+  const note = await getNote(params.slug);
 
-  if (!post) {
+  if (!note) {
     return undefined;
   }
 
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     lastUpdatedAt: modifiedTime,
     summary: description,
     image,
-  } = post.metadata;
-  let ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
+  } = note.metadata;
+  const ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
 
   return {
     title,
@@ -38,7 +38,7 @@ export async function generateMetadata({
       description,
       type: "article",
       publishedTime,
-      url: `${DATA.url}/blog/${post.slug}`,
+      url: `${DATA.url}/notes/${note.slug}`,
       images: [
         {
           url: ogImage,
@@ -51,46 +51,50 @@ export async function generateMetadata({
       description,
       images: [ogImage],
     },
+    other: {
+      modifiedTime,
+    },
   };
 }
 
 export async function generateStaticParams() {
-    let posts = await getBlogPosts();
-    return posts.map((post) => ({
-        slug: post.slug,
-    }));
+  const notes = await getNotes();
+  return notes.map((note) => ({
+    slug: note.slug,
+  }));
 }
 
-export default async function Blog({
+export default async function NotePage({
   params,
 }: {
   params: {
     slug: string;
   };
 }) {
-  let post = await getPost(params.slug);
-//   console.log(post.metadata);
-  if (!post) {
+  const note = await getNote(params.slug);
+
+  if (!note) {
     notFound();
   }
-  
+
+
   return (
-    <section id="blog">
+    <section id="notes">
       <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.lastUpdatedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${DATA.url}${post.metadata.image}`
-              : `${DATA.url}/og?title=${post.metadata.title}`,
-            url: `${DATA.url}/blog/${post.slug}`,
+            "@type": "Article",
+            headline: note.metadata.title,
+            datePublished: note.metadata.publishedAt,
+            dateModified: note.metadata.lastUpdatedAt,
+            description: note.metadata.summary,
+            image: note.metadata.image
+              ? `${DATA.url}${note.metadata.image}`
+              : `${DATA.url}/og?title=${note.metadata.title}`,
+            url: `${DATA.url}/notes/${note.slug}`,
             author: {
               "@type": "Person",
               name: DATA.name,
@@ -98,36 +102,25 @@ export default async function Blog({
           }),
         }}
       />
-      <Link href="/blog" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center pb-10 space-x-1 justify-start">
-        <ChevronLeftIcon
-          size={16}
-          />
-        <span>
-            Back to Blog
-        </span>
+      <Link href="/notes" className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center pb-10 space-x-1 justify-start">
+        <ChevronLeftIcon size={16} />
+        <span>Back to Notes</span>
       </Link>
 
       <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-        {post.metadata.title}
+        {note.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
         <Suspense fallback={<p className="h-5" />}>
-          {/* <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            Updated at {formatDate(post.metadata.lastUpdatedAt)}
-          </p> */}
-        {/* <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            <Link href="/" className="text-pretty">{DATA.name}</Link>
-        </p> */}
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            Published at {formatDate(post.metadata.publishedAt)}
+            Published at {formatDate(note.metadata.publishedAt)}
           </p>
         </Suspense>
       </div>
       <article
         className="prose dark:prose-invert mb-10 text-pretty"
-        dangerouslySetInnerHTML={{ __html: post.source }}
-      ></article>
-      <Comments/>
+        dangerouslySetInnerHTML={{ __html: note.source }}
+      />
     </section>
   );
 }

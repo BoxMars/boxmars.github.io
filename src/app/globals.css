@@ -146,3 +146,30 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 mjx-container.MathJax{
   display: inline-block;
 }
+
+.prose :where(h2, h3, h4, h5, h6) {
+  scroll-margin-top: 5rem;
+}
+
+.prose ul.contains-task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose li.task-list-item {
+  position: relative;
+  padding-left: 1.75rem;
+}
+
+.prose li.task-list-item input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  margin: 0;
+}
+
+.prose li.task-list-item > ul,
+.prose li.task-list-item > ol {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+}

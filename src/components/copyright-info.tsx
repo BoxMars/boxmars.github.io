@@ -1,7 +1,6 @@
 'use client';
 
 import Link from "next/link";   
-import { formatDate } from "@/lib/utils";
 
 export const CopyrightInfo = ({revision}:{revision: any}) => {
 
@@ -9,7 +8,11 @@ export const CopyrightInfo = ({revision}:{revision: any}) => {
     return (
         <div className="text-xs text-slate-600 dark:text-slate-300 print:hidden">
           <p>
-          Copyright © {new Date().getFullYear()} Box, Zhang Huakang
+          Copyright © {new Date().getFullYear()}{" "}
+          <Link href="/notes" className="text-inherit no-underline hover:no-underline focus-visible:no-underline">
+            Box
+          </Link>
+          , Zhang Huakang
           </p>
           {revision && (
             <p>Last update on <span className="underline">{
