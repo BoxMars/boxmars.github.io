@@ -7,10 +7,8 @@ export const DATA = {
   url: "https://boxz.dev",
   location: "Taipa, Macau S.A.R., China",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
-  description:
-    "Computer Science Student. Focusing on **Edge Computing**, **Large Language Model**. ",
-  summary:
-    "I’m pursuing a Master’s in Computer Science at the [University of Macau](https://www.um.edu.mo/) and am the main developer of [What2Reg @UM](https://umeh.top).",
+  description: "Interested in `everything` and `cats`",
+  summary: "",
   avatarUrl: "/me.png",
   skills: [
     "Python",
@@ -54,17 +52,29 @@ export const DATA = {
 
   work: [
     {
-      company: "Fitlab",
+      company: "Li Auto",
       href: "#",
-      badges: ['Internship'],
+      badges: [],
       location: "Shenzhen, China",
-      title: "Machine Learning Engineer",
-      logoUrl: "",
-      start: "Sep. 2021",
-      end: "Dec. 2022",
+      title: "Software Engineer",
+      logoUrl: "https://p.ampmake.com/fed/tmp/egg-multipart-tmp/fed-server-api/2025/07/10/09/92d2ec5c-dbab-4ebc-9229-a3ca185cc967.svg",
+      start: "July 2026",
+      end: "Present",
       description:
-        "1. **Human Pose Estimation**: Focusing on the 3D reconstruction from multiple views in gym, \n 2. **Video Codec**: Optimize the decoding process of video streaming from webcam, and \n 3. **Video Frame Synchronization**: Synchronize video frames from multiple webcams.",
+        "",
     },
+    // {
+    //   company: "Fitlab",
+    //   href: "#",
+    //   badges: ['Internship'],
+    //   location: "Shenzhen, China",
+    //   title: "Machine Learning Engineer",
+    //   logoUrl: "",
+    //   start: "Sep. 2021",
+    //   end: "Dec. 2022",
+    //   description:
+    //     "1. **Human Pose Estimation**: Focusing on the 3D reconstruction from multiple views in gym, \n 2. **Video Codec**: Optimize the decoding process of video streaming from webcam, and \n 3. **Video Frame Synchronization**: Synchronize video frames from multiple webcams.",
+    // },
   ],
   education: [
     {
@@ -95,36 +105,36 @@ export const DATA = {
       title: "Research Assistant",
       logoUrl: "/um.png",
       start: "Aug. 2023",
-      end: "Present",
+      end: "July 2026",
       description:
         "Focus on **Edge Computing** and **Large Language Model**.", 
     },
-    {
-      company: "University of Macau",
-      lab: "State Key Laboratory for IoT for Smart City",
-      href: "#",
-      badges: ['Summer Research'],
-      location: "Macau S.A.R., China",
-      title: "Research Assistant",
-      logoUrl: "/um.png",
-      start: "Jul. 2022",
-      end: "Aug. 2022",
-      description:
-        "Design a yoga teaching and grading system using **pose estimation** implemented on **edge devices**.", 
-    },
-    {
-      company: "University of Macau",
-      lab: "State Key Laboratory for IoT for Smart City",
-      href: "#",
-      badges: ['Summer Research'],
-      location: "Macau S.A.R., China",
-      title: "Research Assistant",
-      logoUrl: "/um.png",
-      start: "Jul. 2021",
-      end: "Aug. 2021",
-      description:
-        "Focus on **GPU Allocation** of multiple *AI Task* in *Edge Device*. ", 
-    },
+    // {
+    //   company: "University of Macau",
+    //   lab: "State Key Laboratory for IoT for Smart City",
+    //   href: "#",
+    //   badges: ['Summer Research'],
+    //   location: "Macau S.A.R., China",
+    //   title: "Research Assistant",
+    //   logoUrl: "/um.png",
+    //   start: "Jul. 2022",
+    //   end: "Aug. 2022",
+    //   description:
+    //     "Design a yoga teaching and grading system using **pose estimation** implemented on **edge devices**.", 
+    // },
+    // {
+    //   company: "University of Macau",
+    //   lab: "State Key Laboratory for IoT for Smart City",
+    //   href: "#",
+    //   badges: ['Summer Research'],
+    //   location: "Macau S.A.R., China",
+    //   title: "Research Assistant",
+    //   logoUrl: "/um.png",
+    //   start: "Jul. 2021",
+    //   end: "Aug. 2021",
+    //   description:
+    //     "Focus on **GPU Allocation** of multiple *AI Task* in *Edge Device*. ", 
+    // },
   ],
   projects: [
     {
@@ -157,46 +167,46 @@ export const DATA = {
       video:
         "",
     },
-    {
-      title: "UM ARK",
-      href: "https://umall.one",
-      dates: "Aug. 2022 - Aug. 2023",
-      active: true,
-      description:
-        "We integrated commonly used features for university life into an *ALL in One* solution. The cross-platform app, developed using React Native, is now available on the App Store and Google Play.",
-      technologies: [
-        "Typescript",
-        "mongoDB",
-        "Python, Django",
-        "React Native",
-        "iOS",
-        "Android",
-      ],
-      links: [
-        {
-          type: "website",
-          href: "https://umall.one",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "git",
-          href: "https://github.com/UM-ARK",
-          icon: <Github className="size-3"/>,
-        },
-        { 
-          type: "iOS",
-          href: "https://apps.apple.com/us/app/ark-all-%E6%BE%B3%E9%96%80%E5%A4%A7%E5%AD%B8%E6%9C%AC%E7%A7%91%E7%94%9Fumer%E5%BF%85%E5%82%99app/id1636670554",
-          icon: <Icons.appstore className="size-3" />,
-        },
-        {
-          type: "Android",
-          href: "https://play.google.com/store/apps/details?id=one.umall&pli=1",
-          icon: <Icons.googlepaly className="size-3" />,
-        },
-      ],
-      image: "/ark.png",
-      video: "",
-    },
+    // {
+    //   title: "UM ARK",
+    //   href: "https://umall.one",
+    //   dates: "Aug. 2022 - Aug. 2023",
+    //   active: true,
+    //   description:
+    //     "We integrated commonly used features for university life into an *ALL in One* solution. The cross-platform app, developed using React Native, is now available on the App Store and Google Play.",
+    //   technologies: [
+    //     "Typescript",
+    //     "mongoDB",
+    //     "Python, Django",
+    //     "React Native",
+    //     "iOS",
+    //     "Android",
+    //   ],
+    //   links: [
+    //     {
+    //       type: "website",
+    //       href: "https://umall.one",
+    //       icon: <Icons.globe className="size-3" />,
+    //     },
+    //     {
+    //       type: "git",
+    //       href: "https://github.com/UM-ARK",
+    //       icon: <Github className="size-3"/>,
+    //     },
+    //     { 
+    //       type: "iOS",
+    //       href: "https://apps.apple.com/us/app/ark-all-%E6%BE%B3%E9%96%80%E5%A4%A7%E5%AD%B8%E6%9C%AC%E7%A7%91%E7%94%9Fumer%E5%BF%85%E5%82%99app/id1636670554",
+    //       icon: <Icons.appstore className="size-3" />,
+    //     },
+    //     {
+    //       type: "Android",
+    //       href: "https://play.google.com/store/apps/details?id=one.umall&pli=1",
+    //       icon: <Icons.googlepaly className="size-3" />,
+    //     },
+    //   ],
+    //   image: "/ark.png",
+    //   video: "",
+    // },
   ],
   // hackathons: [
   //   {

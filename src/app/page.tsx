@@ -113,6 +113,7 @@ export default async function Page() {
           </div>
         </div>
       </section>
+{DATA.summary && (
       <section id="about" className="print:hidden">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <h2 className="font-bold text-lg pb-2">About</h2>
@@ -122,8 +123,33 @@ export default async function Page() {
             {DATA.summary}
           </Markdown>
         </BlurFade>
+      </section>)}
+      <section id="work">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">Work Experience</h2>
+          </BlurFade>
+          {DATA.work.map((work, id) => (
+            <BlurFade
+              key={work.company}
+              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+            >
+              <ResumeCard
+                key={work.company}
+                logoUrl={work.logoUrl}
+                altText={work.company}
+                title={work.company}
+                subtitle={work.title}
+                href={work.href}
+                badges={work.badges}
+                period={`${work.start} - ${work.end ?? "Present"}`}
+                description={work.description}
+                location={work.location}
+              />
+            </BlurFade>
+          ))}
+        </div>
       </section>
-
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -175,32 +201,7 @@ export default async function Page() {
           ))}
         </div>
       </section>
-      <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
-          </BlurFade>
-          {DATA.work.map((work, id) => (
-            <BlurFade
-              key={work.company}
-              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
-            >
-              <ResumeCard
-                key={work.company}
-                logoUrl={work.logoUrl}
-                altText={work.company}
-                title={work.company}
-                subtitle={work.title}
-                href={work.href}
-                badges={work.badges}
-                period={`${work.start} - ${work.end ?? "Present"}`}
-                description={work.description}
-                location={work.location}
-              />
-            </BlurFade>
-          ))}
-        </div>
-      </section>
+
 
       <section id="projects" className="print:hidden">
         <div className="space-y-12 w-full">
