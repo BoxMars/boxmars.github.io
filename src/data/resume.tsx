@@ -167,46 +167,46 @@ export const DATA = {
       video:
         "",
     },
-    // {
-    //   title: "UM ARK",
-    //   href: "https://umall.one",
-    //   dates: "Aug. 2022 - Aug. 2023",
-    //   active: true,
-    //   description:
-    //     "We integrated commonly used features for university life into an *ALL in One* solution. The cross-platform app, developed using React Native, is now available on the App Store and Google Play.",
-    //   technologies: [
-    //     "Typescript",
-    //     "mongoDB",
-    //     "Python, Django",
-    //     "React Native",
-    //     "iOS",
-    //     "Android",
-    //   ],
-    //   links: [
-    //     {
-    //       type: "website",
-    //       href: "https://umall.one",
-    //       icon: <Icons.globe className="size-3" />,
-    //     },
-    //     {
-    //       type: "git",
-    //       href: "https://github.com/UM-ARK",
-    //       icon: <Github className="size-3"/>,
-    //     },
-    //     { 
-    //       type: "iOS",
-    //       href: "https://apps.apple.com/us/app/ark-all-%E6%BE%B3%E9%96%80%E5%A4%A7%E5%AD%B8%E6%9C%AC%E7%A7%91%E7%94%9Fumer%E5%BF%85%E5%82%99app/id1636670554",
-    //       icon: <Icons.appstore className="size-3" />,
-    //     },
-    //     {
-    //       type: "Android",
-    //       href: "https://play.google.com/store/apps/details?id=one.umall&pli=1",
-    //       icon: <Icons.googlepaly className="size-3" />,
-    //     },
-    //   ],
-    //   image: "/ark.png",
-    //   video: "",
-    // },
+    {
+      title: "UM ARK",
+      href: "https://umall.one",
+      dates: "Aug. 2022 - Aug. 2023",
+      active: true,
+      description:
+        "We integrated commonly used features for university life into an *ALL in One* solution. The cross-platform app, developed using React Native, is now available on the App Store and Google Play.",
+      technologies: [
+        "Typescript",
+        "mongoDB",
+        "Python, Django",
+        "React Native",
+        "iOS",
+        "Android",
+      ],
+      links: [
+        {
+          type: "website",
+          href: "https://umall.one",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "git",
+          href: "https://github.com/UM-ARK",
+          icon: <Github className="size-3"/>,
+        },
+        { 
+          type: "iOS",
+          href: "https://apps.apple.com/us/app/ark-all-%E6%BE%B3%E9%96%80%E5%A4%A7%E5%AD%B8%E6%9C%AC%E7%A7%91%E7%94%9Fumer%E5%BF%85%E5%82%99app/id1636670554",
+          icon: <Icons.appstore className="size-3" />,
+        },
+        {
+          type: "Android",
+          href: "https://play.google.com/store/apps/details?id=one.umall&pli=1",
+          icon: <Icons.googlepaly className="size-3" />,
+        },
+      ],
+      image: "/ark.png",
+      video: "",
+    },
   ],
   // hackathons: [
   //   {
