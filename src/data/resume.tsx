@@ -162,6 +162,11 @@ export const DATA = {
           href: "https://github.com/UMHelper/next-web",
           icon: <Github className="size-3"/>,
         },
+        { 
+          type: "iOS",
+          href: "https://apps.apple.com/us/app/what2reg-um/id6804686377",
+          icon: <Icons.appstore className="size-3" />,
+        },
       ],
       image: "/umeh.jpg",
       video:
