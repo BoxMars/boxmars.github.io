@@ -189,7 +189,7 @@ export const DATA = {
       ],
       links: [
         {
-          type: "website",
+          type: "web",
           href: "https://umall.one",
           icon: <Icons.globe className="size-3" />,
         },
